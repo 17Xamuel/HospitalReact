@@ -143,7 +143,7 @@ header label span {
   color: var(--text-grey);
 }
 main {
-  margin-top: 85px;
+  margin-top: 70px;
   padding: 2rem 1.5rem;
   background: #f1f5f9;
   min-height: calc(100vh-90px);
@@ -153,7 +153,7 @@ main {
   grid-template-columns: repeat(4, 1fr);
   row-gap: 2rem;
   column-gap: 2rem;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
 }
 .card-single {
   display: flex;
@@ -181,10 +181,15 @@ main {
 }
 
 .recent-grid {
-  margin-top: 3rem;
+  margin-top: 2rem;
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: 50% auto;
+}
+.fullwidth-ctr {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: 70% auto;
 }
 .card {
   border-radius: 5px;
@@ -271,6 +276,9 @@ td .status {
   .cards {
     grid-template-columns: repeat(3, 1fr);
   }
+  .fullwidth-ctr {
+    grid-template-columns: 100%;
+  }
 }
 @media only screen and (max-width: 768px) {
   .sidebar {
@@ -329,7 +337,8 @@ td .status {
   .cards {
     grid-template-columns: 100%;
   }
-  .recent-grid {
+  .recent-grid,
+  .fullwidth-ctr {
     grid-template-columns: 100%;
   }
   .search-wrapper {

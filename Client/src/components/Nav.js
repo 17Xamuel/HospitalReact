@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Nav extends Component {
   constructor(props) {
@@ -18,16 +19,28 @@ class Nav extends Component {
           <div className="sidebar-menu">
             <ul>
               <li>
-                <a href className="active">
-                  <span className="las la-igloo"></span>
-                  <span>Dashboard</span>
-                </a>
+                <Link to="/">
+                  <a
+                    href
+                    className={
+                      this.props.active === "dashboard" ? "active" : ""
+                    }
+                  >
+                    <span className="las la-igloo"></span>
+                    <span>Dashboard</span>
+                  </a>
+                </Link>
               </li>
               <li>
-                <a href>
-                  <span className="las la-users"></span>
-                  <span>Patients</span>
-                </a>
+                <Link to="/new">
+                  <a
+                    href
+                    className={this.props.active === "new" ? "active" : ""}
+                  >
+                    <span className="las la-users"></span>
+                    <span>New Patient</span>
+                  </a>
+                </Link>
               </li>
               <li>
                 <a href>
