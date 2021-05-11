@@ -12,10 +12,14 @@ class NewPatient extends Component {
       patient_other_name: "",
       patient_dob: "",
       patient_gender: "",
+      patient_marital_status:"",
       patient_district:"",
       patient_subcounty:"",
       patient_parish:"",
-      patient_village:""
+      patient_village:"",
+      patient_screening_data:{
+
+      }
     };
   }
 
@@ -122,6 +126,22 @@ class NewPatient extends Component {
                             });
                           }}
                         />
+                        <TextField
+                          name="patient_marital_status"
+                          variant="outlined"
+                          label="Marital Status"
+                          style={{
+                            width: "240px",
+                            margin: "20px",
+                          }}
+                          value={this.state.patient_marital_status}
+                          onChange={(e) => {
+                            this.setState({
+                              ...this.state,
+                              patient_marital_status: e.target.value,
+                            });
+                          }}
+                        />
                       </div>
                       <div className="inputCtr">
                         <h4>Address</h4>
@@ -190,7 +210,7 @@ class NewPatient extends Component {
                           }}
                         />
                       </div>
-                                            <div className="inputCtr">
+                      <div className="inputCtr">
                         <h4>Screening Data</h4>
                         <TextField
                           name="patient_surname"

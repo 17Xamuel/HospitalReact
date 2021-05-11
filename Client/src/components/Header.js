@@ -9,7 +9,7 @@ class Header extends Component {
     return (
       <header>
         <h2>
-          <label for="nav-toggle">
+          <label htmlFor="nav-toggle">
             <span className="las la-bars"></span>
           </label>
           Dashboard
@@ -19,7 +19,13 @@ class Header extends Component {
           <input type="search" name="" id="" placeholder="Search here" />
         </div>
         <div className="user-wrapper">
-          <img src="./assets/medicine.png" alt="" width="40px" height="40px" />
+          {/* <img src="../assets/africa.jpg" alt="" width="40px" height="40px" /> */}
+          <img
+            src={require("../assets/africa.jpg")}
+            alt=""
+            width="40px"
+            height="40px"
+          />
           <div className="">
             <h4>John Doe</h4>
             <small>Doctor</small>

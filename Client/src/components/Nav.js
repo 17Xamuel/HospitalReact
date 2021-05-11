@@ -9,6 +9,7 @@ class Nav extends Component {
   render() {
     return (
       <>
+        <div className="sideBar-ctr">
         <div className="sidebar">
           <div className="sidebar-brand">
             <h2>
@@ -69,6 +70,7 @@ class Nav extends Component {
             </ul>
           </div>
         </div>
+      </div>
       </>
     );
   }
