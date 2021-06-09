@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-const url = "http://localhost:8080/api";
+const url = "http://localhost:8000/api";
 
 export default class FormsApi {
   async postPatient(data) {
