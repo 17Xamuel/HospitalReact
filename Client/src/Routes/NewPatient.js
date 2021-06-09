@@ -2,28 +2,51 @@ import React, { Component } from "react";
 import { TextField, Button } from "@material-ui/core";
 import Nav from "../components/Nav";
 import Header from "../components/Header";
+import FormsApi from "../api/forms";
+
+import "../design/main.css";
 
 class NewPatient extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      patient_surname: "",
-      patient_middle_name: "",
-      patient_other_name: "",
-      patient_dob: "",
-      patient_gender: "",
-      patient_marital_status:"",
-      patient_district:"",
-      patient_subcounty:"",
-      patient_parish:"",
-      patient_village:"",
-      patient_screening_data:{
-
-      }
+      patient: {
+        patient_surname: "",
+        patient_middle_name: "",
+        patient_other_name: "",
+        patient_dob: "",
+        patient_gender: "",
+        patient_marital_status: "",
+        patient_district: "",
+        patient_subcounty: "",
+        patient_parish: "",
+        patient_village: "",
+        patient_screening_data: {},
+      },
     };
   }
 
-  handleSubmit = () => {};
+//   handleSubmit(event) {
+//     // Prevent default behavior
+//     event.preventDefault();
+
+//     const data = new FormData(event.target);
+//     // Access FormData fields with `data.get(fieldName)`
+//     // For example, converting to upper case
+//     data.set('username', data.get('username').toUpperCase());
+
+//     // Do your Axios stuff here
+// }
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    let _fcontent = {}; 
+  fd.forEach((value, key) => {
+    _fcontent[key] = value;
+  }); 
+     const api = new FormsApi();
+    api.postPatient(_fcontent);
+  };
 
   render() {
     return (
@@ -35,402 +58,245 @@ class NewPatient extends Component {
           <main>
             <div className="fullwidth-ctr">
               <div className="projects">
-                <div className="card">
+                <form className="card" autoComplete="off" onSubmit={this.handleSubmit}>
                   <div className="card-header">
                     <h3>New Patient</h3>
-                    <button>
-                      See all <span className="las la-arrow-right"></span>
+                    <div className="">
+                    <span className="btn btn-faint btn-sw" style={{marginRight:"10px"}}>
+                      <span className="las la-window-close"></span>
+                      <span style={{marginLeft:"5px"}}>Cancel</span>
+                    </span>
+                    <button className="btn btn-sw" style={{marginLeft:"10px"}} type="submit">
+                      <span className="las la-save"></span>
+                      <span style={{marginLeft:"5px"}}>Save</span>
                     </button>
+                    </div>
                   </div>
                   <div className="card-body">
-                    <form autoComplete="off" onSubmit={this.handleSubmit}>
-                      <div className="inputCtr">
+                    <div>
+                      <div className="inputCtr" style={styles.input_ctr}>
                         <h4>Patient Bio Data</h4>
-                        <TextField
-                          name="patient_surname"
-                          variant="outlined"
-                          label="Patient Surname"
-                          style={{
-                            width: "240px",
-                            margin: "20px",
-                          }}
-                          value={this.state.patient_surname}
-                          onChange={(e) => {
-                            this.setState({
-                              ...this.state,
-                              patient_surname: e.target.value,
-                            });
-                          }}
-                        />
-                        <TextField
-                          name="patient_middle_name"
-                          variant="outlined"
-                          label="Middle Name"
-                          style={{
-                            width: "240px",
-                            margin: "20px",
-                          }}
-                          value={this.state.patient_middle_name}
-                          onChange={(e) => {
-                            this.setState({
-                              ...this.state,
-                              patient_middle_name: e.target.value,
-                            });
-                          }}
-                        />
-                        <TextField
-                          name="patient_other_name"
-                          variant="outlined"
-                          label="Other Names"
-                          style={{
-                            width: "240px",
-                            margin: "20px",
-                          }}
-                          value={this.state.patient_other_name}
-                          onChange={(e) => {
-                            this.setState({
-                              ...this.state,
-                              patient_other_name: e.target.value,
-                            });
-                          }}
-                        />
-                        <TextField
-                          name="patient_dob"
-                          variant="outlined"
-                          label="Date of Birth"
-                          style={{
-                            width: "120px",
-                            margin: "20px",
-                          }}
-                          value={this.state.patient_dob}
-                          onChange={(e) => {
-                            this.setState({
-                              ...this.state,
-                              patient_dob: e.target.value,
-                            });
-                          }}
-                        />
-                        <TextField
-                          name="patient_gender"
-                          variant="outlined"
-                          label="Gender"
-                          style={{
-                            width: "150px",
-                            margin: "20px",
-                          }}
-                          value={this.state.patient_gender}
-                          onChange={(e) => {
-                            this.setState({
-                              ...this.state,
-                              patient_gender: e.target.value,
-                            });
-                          }}
-                        />
-                        <TextField
-                          name="patient_marital_status"
-                          variant="outlined"
-                          label="Marital Status"
-                          style={{
-                            width: "240px",
-                            margin: "20px",
-                          }}
-                          value={this.state.patient_marital_status}
-                          onChange={(e) => {
-                            this.setState({
-                              ...this.state,
-                              patient_marital_status: e.target.value,
-                            });
-                          }}
-                        />
+                        <div className="inputs_ctr" style={styles.input_group}>
+                          <div className="inpts_on_left">
+                          <TextField
+                            name="surname"
+                            variant="outlined"
+                            label="Surname"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          <TextField
+                            name="first_name"
+                            variant="outlined"
+                            label="First Name"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          <TextField
+                            name="dob"
+                            variant="outlined"
+                            label="Date Of Birth"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          <TextField
+                            name="gender"
+                            variant="outlined"
+                            label="Gender"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          </div>
+                          <div className="inpts_center">
+                          <TextField
+                            name="phone_contact"
+                            variant="outlined"
+                            label="Phone Contact"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          <TextField
+                            name="email_address"
+                            variant="outlined"
+                            label="Email Address:(If Any)"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          <TextField
+                            name="pt_occupation"
+                            variant="outlined"
+                            label="Occupation"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          <TextField
+                            name="education_level"
+                            variant="outlined"
+                            label="Education Level"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          </div>
+                          <div className="inpts_on_right">
+                          <TextField
+                            name="marital_status"
+                            variant="outlined"
+                            label="Marital Status"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          <TextField
+                            name="religion"
+                            variant="outlined"
+                            label="Religion"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          <TextField
+                            name="tribe"
+                            variant="outlined"
+                            label="Tribe"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          </div>
+                        </div>
                       </div>
-                      <div className="inputCtr">
-                        <h4>Address</h4>
-                        <TextField
-                          name="patient_district"
-                          variant="outlined"
-                          label="District"
-                          style={{
-                            width: "240px",
-                            margin: "20px",
-                          }}
-                          value={this.state.patient_district}
-                          onChange={(e) => {
-                            this.setState({
-                              ...this.state,
-                              patient_district: e.target.value,
-                            });
-                          }}
-                        />
-                        <TextField
-                          name="patient_subcounty"
-                          variant="outlined"
-                          label="Subcounty"
-                          style={{
-                            width: "240px",
-                            margin: "20px",
-                          }}
-                          value={this.state.patient_subcounty}
-                          onChange={(e) => {
-                            this.setState({
-                              ...this.state,
-                              patient_subcounty: e.target.value,
-                            });
-                          }}
-                        />
-                        <TextField
-                          name="patient_parish"
-                          variant="outlined"
-                          label="Parish"
-                          style={{
-                            width: "240px",
-                            margin: "20px",
-                          }}
-                          value={this.state.patient_parish}
-                          onChange={(e) => {
-                            this.setState({
-                              ...this.state,
-                              patient_parish: e.target.value,
-                            });
-                          }}
-                        />
-                        <TextField
-                          name="patient_village"
-                          variant="outlined"
-                          label="Village"
-                          style={{
-                            width: "240px",
-                            margin: "20px",
-                          }}
-                          value={this.state.patient_village}
-                          onChange={(e) => {
-                            this.setState({
-                              ...this.state,
-                              patient_village: e.target.value,
-                            });
-                          }}
-                        />
+                      <div className="inputCtr" style={styles.input_ctr}>
+                        <h4>Patient Bio Data</h4>
+                        <div className="inputs_ctr" style={styles.input_group}>
+                          <div className="inpts_on_left">
+                          <TextField
+                            name="surname"
+                            variant="outlined"
+                            label="Surname"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          <TextField
+                            name="first_name"
+                            variant="outlined"
+                            label="First Name"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          <TextField
+                            name="dob"
+                            variant="outlined"
+                            label="Date Of Birth"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          <TextField
+                            name="gender"
+                            variant="outlined"
+                            label="Gender"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          </div>
+                          <div className="inpts_center">
+                          <TextField
+                            name="phone_contact"
+                            variant="outlined"
+                            label="Phone Contact"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          <TextField
+                            name="email_address"
+                            variant="outlined"
+                            label="Email Address:(If Any)"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          <TextField
+                            name="pt_occupation"
+                            variant="outlined"
+                            label="Occupation"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          <TextField
+                            name="education_level"
+                            variant="outlined"
+                            label="Education Level"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          </div>
+                          <div className="inpts_on_right">
+                          <TextField
+                            name="marital_status"
+                            variant="outlined"
+                            label="Marital Status"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          <TextField
+                            name="religion"
+                            variant="outlined"
+                            label="Religion"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          <TextField
+                            name="tribe"
+                            variant="outlined"
+                            label="Tribe"
+                            style={{
+                              width: "240px",
+                              margin: "20px",
+                            }}
+                          />
+                          </div>
+                        </div>
                       </div>
-                      <div className="inputCtr">
-                        <h4>Screening Data</h4>
-                        <TextField
-                          name="patient_surname"
-                          variant="outlined"
-                          label="Patient Surname"
-                          style={{
-                            width: "240px",
-                            margin: "20px",
-                          }}
-                          value={this.state.patient_surname}
-                          onChange={(e) => {
-                            this.setState({
-                              ...this.state,
-                              patient_surname: e.target.value,
-                            });
-                          }}
-                        />
-                        <TextField
-                          name="patient_middle_name"
-                          variant="outlined"
-                          label="Middle Name"
-                          style={{
-                            width: "240px",
-                            margin: "20px",
-                          }}
-                          value={this.state.patient_middle_name}
-                          onChange={(e) => {
-                            this.setState({
-                              ...this.state,
-                              patient_middle_name: e.target.value,
-                            });
-                          }}
-                        />
-                        <TextField
-                          name="patient_other_name"
-                          variant="outlined"
-                          label="Other Names"
-                          style={{
-                            width: "240px",
-                            margin: "20px",
-                          }}
-                          value={this.state.patient_other_name}
-                          onChange={(e) => {
-                            this.setState({
-                              ...this.state,
-                              patient_other_name: e.target.value,
-                            });
-                          }}
-                        />
-                        <TextField
-                          name="patient_dob"
-                          variant="outlined"
-                          label="Date of Birth"
-                          style={{
-                            width: "120px",
-                            margin: "20px",
-                          }}
-                          value={this.state.patient_dob}
-                          onChange={(e) => {
-                            this.setState({
-                              ...this.state,
-                              patient_dob: e.target.value,
-                            });
-                          }}
-                        />
-                        <TextField
-                          name="patient_gender"
-                          variant="outlined"
-                          label="Gender"
-                          style={{
-                            width: "150px",
-                            margin: "20px",
-                          }}
-                          value={this.state.patient_gender}
-                          onChange={(e) => {
-                            this.setState({
-                              ...this.state,
-                              patient_gender: e.target.value,
-                            });
-                          }}
-                        />
-                      </div>
-                                            <div className="inputCtr">
-                        <h4>Screening Data</h4>
-                        <TextField
-                          name="patient_surname"
-                          variant="outlined"
-                          label="Patient Surname"
-                          style={{
-                            width: "240px",
-                            margin: "20px",
-                          }}
-                          value={this.state.patient_surname}
-                          onChange={(e) => {
-                            this.setState({
-                              ...this.state,
-                              patient_surname: e.target.value,
-                            });
-                          }}
-                        />
-                        <TextField
-                          name="patient_middle_name"
-                          variant="outlined"
-                          label="Middle Name"
-                          style={{
-                            width: "240px",
-                            margin: "20px",
-                          }}
-                          value={this.state.patient_middle_name}
-                          onChange={(e) => {
-                            this.setState({
-                              ...this.state,
-                              patient_middle_name: e.target.value,
-                            });
-                          }}
-                        />
-                        <TextField
-                          name="patient_other_name"
-                          variant="outlined"
-                          label="Other Names"
-                          style={{
-                            width: "240px",
-                            margin: "20px",
-                          }}
-                          value={this.state.patient_other_name}
-                          onChange={(e) => {
-                            this.setState({
-                              ...this.state,
-                              patient_other_name: e.target.value,
-                            });
-                          }}
-                        />
-                        <TextField
-                          name="patient_dob"
-                          variant="outlined"
-                          label="Date of Birth"
-                          style={{
-                            width: "120px",
-                            margin: "20px",
-                          }}
-                          value={this.state.patient_dob}
-                          onChange={(e) => {
-                            this.setState({
-                              ...this.state,
-                              patient_dob: e.target.value,
-                            });
-                          }}
-                        />
-                        <TextField
-                          name="patient_gender"
-                          variant="outlined"
-                          label="Gender"
-                          style={{
-                            width: "150px",
-                            margin: "20px",
-                          }}
-                          value={this.state.patient_gender}
-                          onChange={(e) => {
-                            this.setState({
-                              ...this.state,
-                              patient_gender: e.target.value,
-                            });
-                          }}
-                        />
-                      </div>
-                      <div className="inputsCtr">
-                        <h4>Submit</h4>
-                        <Button style={{
-                          backgroundColor:'#4671ff',
-                          color:'white',
-                          margin: '25px'
-                        }}>Submit</Button>
-                      </div>
-                    </form>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div className="projects">
-                <div className="card">
-                  <div className="card-header">
-                    <h3>Recent Patients</h3>
-                    <button>
-                      See all <span className="las la-arrow-right"></span>
-                    </button>
-                  </div>
-                  <div className="card-body">
-                    <table width="100%">
-                      <thead>
-                        <tr>
-                          <td>Patient</td>
-                          <td>Department</td>
-                          <td>Status</td>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Fat</td>
-                          <td>OPD</td>
-                          <td>
-                            <span className="status purple"></span>Sick
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Dan</td>
-                          <td>OPD</td>
-                          <td>
-                            <span className="status pink"></span>Very Sick
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Hajara</td>
-                          <td>OPD</td>
-                          <td>
-                            <span className="status orange"></span>Treatment
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+                </form>
               </div>
             </div>
           </main>
@@ -441,3 +307,18 @@ class NewPatient extends Component {
 }
 
 export default NewPatient;
+
+const styles = {
+  input_ctr:{
+    width:"75%",
+    margin:"auto"
+  },
+  input_group:{
+    width:"100%",
+    border:"1px solid rgba(0,0,0,0.1)",
+    borderRadius:"5px",
+    margin:"15px auto",
+    display:'flex',
+    justifyContent:'space-around'
+  }
+}

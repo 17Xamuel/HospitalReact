@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Avatar from "../assets/africa.jpg";
 
 class Header extends Component {
   constructor(props) {
@@ -12,20 +13,14 @@ class Header extends Component {
           <label htmlFor="nav-toggle">
             <span className="las la-bars"></span>
           </label>
-          Dashboard
+          Teaching Hospital
         </h2>
         <div className="search-wrapper">
           <span className="las la-search"></span>
           <input type="search" name="" id="" placeholder="Search here" />
         </div>
         <div className="user-wrapper">
-          {/* <img src="../assets/africa.jpg" alt="" width="40px" height="40px" /> */}
-          <img
-            src={require("../assets/africa.jpg")}
-            alt=""
-            width="40px"
-            height="40px"
-          />
+          <img src={Avatar} alt="" width="40px" height="40px" />
           <div className="">
             <h4>John Doe</h4>
             <small>Doctor</small>
