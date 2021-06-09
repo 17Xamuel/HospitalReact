@@ -1,18 +1,13 @@
 const express = require("express");
-// const conn = require("./db/db");
-// const uuid = require("uuid");
-const cors = require("cors");
-// const bcrypt = require("bcryptjs");
+const conn = require("./database/db");
+const PORT = process.env.PORT || 8000;
+
 const app = express();
 
-const PORT = process.env.PORT || 8080;
+app.use(express.static("public", { extensions: ["html", "htm"] }));
+app.use("api/user/doctor/", require("./api/doctor"));
+app.use("/api/user/receptionist/", require("./api/receptionist"));
 
-app.use(express.json());
-app.use(cors());
-app.post("/api/user/receptionist/new_patient", (req, res) => {
-  console.log(req.body);
-  res.send({ data: "got" });
-});
 app.listen(PORT, () => {
-  console.log(`Server Started on port ${PORT}.....`);
+  console.log(`Server started on Port ${PORT}....`);
 });
