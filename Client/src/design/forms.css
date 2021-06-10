@@ -1,0 +1,25 @@
+.input_ctr {
+  width: 75%;
+  margin: "auto";
+}
+.input_group {
+  width: "100%";
+  border: "1px solid rgba(0,0,0,0.1)";
+  border-radius: "5px";
+  margin: "15px auto";
+  display: "flex";
+  justify-content: "space-around";
+}
+.text_field {
+  width: "75%";
+  margin: "20px";
+}
+@media screen and (max-width: 1024px) {
+  .input_group {
+    flex-direction: column;
+  }
+  .text_field {
+    width: "75%";
+    margin: "20px";
+  }
+}

@@ -1,36 +1,81 @@
 import React, { Component } from "react";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Snackbar, Button, IconButton } from "@material-ui/core";
+import MuiAlert from "@material-ui/lab/Alert";
 import Nav from "../components/Nav";
 import Header from "../components/Header";
 import FormsApi from "../api/forms";
 
 import "../design/main.css";
 
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 class NewPatient extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      open: false,
+      message: "Please Wait...",
+      messageState: "",
+    };
   }
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    this.setState({ ...this.state, open: true, messageState: "info" });
     const fd = new FormData(e.target);
     let _fcontent = {};
     fd.forEach((value, key) => {
       _fcontent[key] = value;
     });
     const api = new FormsApi();
-    api.postPatient(_fcontent);
+    let res = await api.postPatient(_fcontent);
+    console.log(res);
+    if (res.status === true) {
+      this.setState({
+        ...this.state,
+        message: "Patient Registered SuccessFully...",
+        messageState: "success",
+      });
+    }
   };
 
-  handleChangeForm = (e) => {
-    const test = document.getElementsByClassName("inputs_ctr");
-    console.log(test);
+  closePopUp = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    this.setState({ ...this.state, open: false });
   };
 
   render() {
     return (
       <>
+        <Snackbar
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+          open={this.state.open}
+          autoHideDuration={5000}
+          onClose={this.closePopUp}
+          action={
+            <React.Fragment>
+              <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={this.closePopUp}
+              >
+                <i className="las la-times"></i>
+              </IconButton>
+            </React.Fragment>
+          }
+        >
+          <Alert onClose={this.closePopUp} severity={this.state.messageState}>
+            {this.state.message}
+          </Alert>
+        </Snackbar>
         <input type="checkbox" id="nav-toggle" />
         <Nav active="new" />
         <div className="main-content">
@@ -46,21 +91,24 @@ class NewPatient extends Component {
                   <div className="card-header">
                     <h3>New Patient</h3>
                     <div className="">
-                      <span
-                        className="btn btn-faint btn-sw btn-span"
-                        style={{ marginRight: "10px" }}
-                      >
-                        <span className="las la-window-close"></span>
-                        <span style={{ marginLeft: "5px" }}>Cancel</span>
-                      </span>
-                      <button
-                        className="btn btn-sw"
-                        style={{ marginLeft: "10px" }}
+                      <Button
                         type="submit"
+                        aria-describedby={this.id}
+                        variant="contained"
+                        color="primary"
+                        style={{ marginInline: 10 }}
                       >
-                        <span className="las la-save"></span>
-                        <span style={{ marginLeft: "5px" }}>Save</span>
-                      </button>
+                        Cancel
+                      </Button>
+                      <Button
+                        type="submit"
+                        aria-describedby={this.id}
+                        variant="contained"
+                        color="primary"
+                        style={{ marginInline: 10 }}
+                      >
+                        Save
+                      </Button>
                     </div>
                   </div>
                   <div className="card-body">
@@ -108,7 +156,7 @@ function BioData() {
             variant="outlined"
             label="Surname"
             style={{
-              width: "240px",
+              width: "75%",
               margin: "20px",
             }}
           />

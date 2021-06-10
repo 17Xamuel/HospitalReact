@@ -1,29 +1,21 @@
 import React, { Component } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-
-import "./app.css";
-import "line-awesome/dist/line-awesome/css/line-awesome.css";
-import Dashboard from "./Routes/Dashboard";
-import NewPatient from "./Routes/NewPatient";
-import Registered from "./Routes/Registered";
+import user_logged_in from "./app_config";
+import Receptionist from "./users_routes/reception";
+import Accounts from "./users_routes/accounts";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      user: user_logged_in.user,
+    };
   }
   render() {
-    return (
-      <BrowserRouter>
-        <div>
-          <Switch>
-            <Route path="/" exact component={Dashboard} />
-            <Route path="/new" exact component={NewPatient} />
-            <Route path="/registered" exact component={Registered} />
-          </Switch>
-        </div>
-      </BrowserRouter>
-    );
+    if (user_logged_in.user === "receptionist") {
+      return <Receptionist />;
+    } else if (user_logged_in.user === "accounts") {
+      return <Accounts />;
+    }
   }
 }
 
