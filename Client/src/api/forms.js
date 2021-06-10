@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 
 const url = "http://localhost:8000/api";
@@ -10,9 +9,10 @@ export default class FormsApi {
         `${url}/user/receptionist/new_patient`,
         data
       );
-      console.log(res.data);
+      return res.data;
     } catch (error) {
       console.error(error);
+      return "Error";
     }
   }
 }

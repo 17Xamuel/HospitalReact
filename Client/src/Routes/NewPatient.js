@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Snackbar } from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
 import Nav from "../components/Nav";
 import Header from "../components/Header";
 import FormsApi from "../api/forms";
@@ -9,7 +10,9 @@ import "../design/main.css";
 class NewPatient extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      open: false,
+    };
   }
 
   handleSubmit = async (e) => {
@@ -20,17 +23,44 @@ class NewPatient extends Component {
       _fcontent[key] = value;
     });
     const api = new FormsApi();
-    api.postPatient(_fcontent);
+    let res = await api.postPatient(_fcontent);
+    if (res.status === true) {
+      this.setState({ ...this.state, open: true });
+    }
   };
 
-  handleChangeForm = (e) => {
-    const test = document.getElementsByClassName("inputs_ctr");
-    console.log(test);
+  closePopUp = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    this.setState({ ...this.state, open: false });
   };
 
   render() {
     return (
       <>
+        <Snackbar
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+          open={this.state.open}
+          autoHideDuration={5000}
+          onClose={this.closePopUp}
+          message="Patient Registered Successfully"
+          action={
+            <React.Fragment>
+              <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={this.closePopUp}
+              >
+                <i class="las la-times"></i>
+              </IconButton>
+            </React.Fragment>
+          }
+        />
         <input type="checkbox" id="nav-toggle" />
         <Nav active="new" />
         <div className="main-content">
@@ -50,7 +80,7 @@ class NewPatient extends Component {
                         className="btn btn-faint btn-sw btn-span"
                         style={{ marginRight: "10px" }}
                       >
-                        <span className="las la-window-close"></span>
+                        <i className="lar la-times-circle"></i>
                         <span style={{ marginLeft: "5px" }}>Cancel</span>
                       </span>
                       <button
@@ -108,7 +138,7 @@ function BioData() {
             variant="outlined"
             label="Surname"
             style={{
-              width: "240px",
+              width: "75%",
               margin: "20px",
             }}
           />
