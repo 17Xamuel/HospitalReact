@@ -4,6 +4,12 @@ const uuid = require("uuid");
 
 router.post("/new_patient", async (req, res) => {
   console.log(req.body);
+  setTimeout(() => {
+    res.send({ data: "Patient Added", status: true });
+  }, 3000);
+});
+router.post("/new_patient/test", async (req, res) => {
+  console.log(req.body);
   let {
     surname,
     first_name,
@@ -37,9 +43,9 @@ router.post("/new_patient", async (req, res) => {
             occupation: pt_occupation,
             education_level: education_level,
           },
-          (err2, res2) => {
-            if (err2) throw err2;
-            res.send({ data: "Patient Added" });
+          (err_inserting, res_inserting) => {
+            if (err_inserting) throw err_inserting;
+            res.send({ data: "Patient Added", status: true });
           }
         );
       } else {

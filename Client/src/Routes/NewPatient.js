@@ -1,22 +1,29 @@
 import React, { Component } from "react";
-import { TextField, Snackbar } from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
+import { TextField, Snackbar, Button, IconButton } from "@material-ui/core";
+import MuiAlert from "@material-ui/lab/Alert";
 import Nav from "../components/Nav";
 import Header from "../components/Header";
 import FormsApi from "../api/forms";
 
 import "../design/main.css";
 
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 class NewPatient extends Component {
   constructor(props) {
     super(props);
     this.state = {
       open: false,
+      message: "Please Wait...",
+      messageState: "",
     };
   }
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    this.setState({ ...this.state, open: true, messageState: "info" });
     const fd = new FormData(e.target);
     let _fcontent = {};
     fd.forEach((value, key) => {
@@ -24,8 +31,13 @@ class NewPatient extends Component {
     });
     const api = new FormsApi();
     let res = await api.postPatient(_fcontent);
+    console.log(res);
     if (res.status === true) {
-      this.setState({ ...this.state, open: true });
+      this.setState({
+        ...this.state,
+        message: "Patient Registered SuccessFully...",
+        messageState: "success",
+      });
     }
   };
 
@@ -41,13 +53,12 @@ class NewPatient extends Component {
       <>
         <Snackbar
           anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
+            vertical: "top",
+            horizontal: "center",
           }}
           open={this.state.open}
           autoHideDuration={5000}
           onClose={this.closePopUp}
-          message="Patient Registered Successfully"
           action={
             <React.Fragment>
               <IconButton
@@ -56,11 +67,15 @@ class NewPatient extends Component {
                 color="inherit"
                 onClick={this.closePopUp}
               >
-                <i class="las la-times"></i>
+                <i className="las la-times"></i>
               </IconButton>
             </React.Fragment>
           }
-        />
+        >
+          <Alert onClose={this.closePopUp} severity={this.state.messageState}>
+            {this.state.message}
+          </Alert>
+        </Snackbar>
         <input type="checkbox" id="nav-toggle" />
         <Nav active="new" />
         <div className="main-content">
@@ -76,21 +91,24 @@ class NewPatient extends Component {
                   <div className="card-header">
                     <h3>New Patient</h3>
                     <div className="">
-                      <span
-                        className="btn btn-faint btn-sw btn-span"
-                        style={{ marginRight: "10px" }}
-                      >
-                        <i className="lar la-times-circle"></i>
-                        <span style={{ marginLeft: "5px" }}>Cancel</span>
-                      </span>
-                      <button
-                        className="btn btn-sw"
-                        style={{ marginLeft: "10px" }}
+                      <Button
                         type="submit"
+                        aria-describedby={this.id}
+                        variant="contained"
+                        color="primary"
+                        style={{ marginInline: 10 }}
                       >
-                        <span className="las la-save"></span>
-                        <span style={{ marginLeft: "5px" }}>Save</span>
-                      </button>
+                        Cancel
+                      </Button>
+                      <Button
+                        type="submit"
+                        aria-describedby={this.id}
+                        variant="contained"
+                        color="primary"
+                        style={{ marginInline: 10 }}
+                      >
+                        Save
+                      </Button>
                     </div>
                   </div>
                   <div className="card-body">
