@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import { TextField, Snackbar, Button, IconButton } from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
-import Nav from "../components/Nav";
-import Header from "../components/Header";
-import FormsApi from "../api/forms";
+import Nav from "../../components/Nav";
+import Header from "../../components/Header";
+import FormsApi from "../../api/forms";
 
-import "../design/main.css";
+import "../../design/main.css";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-class NewPatient extends Component {
+class Screening extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -77,7 +77,7 @@ class NewPatient extends Component {
           </Alert>
         </Snackbar>
         <input type="checkbox" id="nav-toggle" />
-        <Nav active="new" />
+        <Nav active="screening" />
         <div className="main-content">
           <Header />
           <main>
@@ -114,8 +114,6 @@ class NewPatient extends Component {
                   <div className="card-body">
                     <div>
                       <BioData />
-                      <Address />
-                      <NextOfKin />
                     </div>
                   </div>
                 </form>
@@ -128,7 +126,7 @@ class NewPatient extends Component {
   }
 }
 
-export default NewPatient;
+export default Screening;
 
 const styles = {
   input_ctr: {
@@ -148,7 +146,7 @@ const styles = {
 function BioData() {
   return (
     <div className="inputCtr" style={styles.input_ctr}>
-      <h4>Patient Bio Data</h4>
+      <h4>Patient Screening Data</h4>
       <div className="inputs_ctr" style={styles.input_group}>
         <div className="inpts_on_left">
           <TextField
@@ -249,118 +247,6 @@ function BioData() {
             name="tribe"
             variant="outlined"
             label="Tribe"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-function Address() {
-  return (
-    <div className="inputCtr" style={styles.input_ctr}>
-      <h4>Patient Address</h4>
-      <div className="inputs_ctr" style={styles.input_group}>
-        <div className="inpts_on_left">
-          <TextField
-            name="district"
-            variant="outlined"
-            label="District"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="sub_county"
-            variant="outlined"
-            label="Sub County"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="parish"
-            variant="outlined"
-            label="Parish"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="village"
-            variant="outlined"
-            label="Village"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-function NextOfKin() {
-  return (
-    <div className="inputCtr" style={styles.input_ctr}>
-      <h4>Next Of Kin</h4>
-      <div className="inputs_ctr" style={styles.input_group}>
-        <div className="inpts_on_left">
-          <TextField
-            name="nk_surname"
-            variant="outlined"
-            label="Next Of Kin Surname"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="nk_first_name"
-            variant="outlined"
-            label="Next Of Kin Firstname"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="nk_relationship"
-            variant="outlined"
-            label="Relationship With Parent"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="nk_address"
-            variant="outlined"
-            label="Address"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="nk_telephone"
-            variant="outlined"
-            label="Phone Number"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="nk_occupation"
-            variant="outlined"
-            label="Occupation"
             style={{
               width: "240px",
               margin: "20px",

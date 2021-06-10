@@ -1,3 +1,3 @@
-export default user_logged_in = {
+export default {
   user: "receptionist",
 };
