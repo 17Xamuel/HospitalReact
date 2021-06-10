@@ -7,7 +7,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use("api/user/accounts/", require("./api/accounts"));
+app.use("/api/user/accounts/", require("./api/accounts"));
 app.use("/api/user/receptionist/", require("./api/receptionist"));
 
 app.listen(PORT, () => {
