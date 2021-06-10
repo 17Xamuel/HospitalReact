@@ -228,15 +228,22 @@ main {
   grid-gap: 2rem;
   grid-template-columns: 50% auto;
 }
+.recent-grid-left {
+  margin-top: 2rem;
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: 60% auto;
+}
 .fullwidth-ctr {
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: 100% auto;
 }
 .card {
+  height: fit-content;
   border-radius: 10px;
   background: #ffffff;
-  box-shadow: 6px 6px 9px #dee1e5, -6px -6px 9px #ffffff;
+  box-shadow: 6px 6px 9px #dee1e5, -2px -2px 5px #ffffff;
 }
 .card-header,
 .card-body {

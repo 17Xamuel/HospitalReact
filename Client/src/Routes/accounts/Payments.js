@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { TextField, Snackbar, Button, IconButton } from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
-import Nav from "../../components/Nav";
-import Header from "../../components/Header";
+import Nav from "./components/Nav";
+import Header from "./components/Header";
 import FormsApi from "../../api/forms";
 
 import "../../design/main.css";
@@ -30,7 +30,7 @@ class Payments extends Component {
       _fcontent[key] = value;
     });
     const api = new FormsApi();
-    let res = await api.postPatient(_fcontent);
+    let res = await api.postNewPayment(_fcontent);
     console.log(res);
     if (res.status === true) {
       this.setState({
@@ -77,11 +77,11 @@ class Payments extends Component {
           </Alert>
         </Snackbar>
         <input type="checkbox" id="nav-toggle" />
-        <Nav active="new" />
+        <Nav active="payments" />
         <div className="main-content">
           <Header />
           <main>
-            <div className="fullwidth-ctr">
+            <div className="recent-grid-left">
               <div className="projects">
                 <form
                   className="card"
@@ -89,16 +89,20 @@ class Payments extends Component {
                   onSubmit={this.handleSubmit}
                 >
                   <div className="card-header">
-                    <h3>New Patient</h3>
+                    <h3>New Payment</h3>
                     <div className="">
                       <Button
                         type="submit"
-                        aria-describedby={this.id}
                         variant="contained"
                         color="primary"
                         style={{ marginInline: 10 }}
                       >
-                        Cancel
+                        <span
+                          style={{ fontSize: "17.5px", marginInline: "10px" }}
+                        >
+                          <i className="las la-print"></i>
+                        </span>
+                        Print Receipt
                       </Button>
                       <Button
                         type="submit"
@@ -107,6 +111,11 @@ class Payments extends Component {
                         color="primary"
                         style={{ marginInline: 10 }}
                       >
+                        <span
+                          style={{ fontSize: "17.5px", marginInline: "10px" }}
+                        >
+                          <i className="las la-save"></i>
+                        </span>
                         Save
                       </Button>
                     </div>
@@ -117,6 +126,63 @@ class Payments extends Component {
                     </div>
                   </div>
                 </form>
+              </div>
+              <div className="card">
+                <div className="card-header">
+                  <h3>Payment Details</h3>
+                  <Button variant="contained" color="primary">
+                    <span style={{ fontSize: "17.5px", marginInline: "10px" }}>
+                      <i className="las la-print"></i>
+                    </span>
+                    Print
+                  </Button>
+                </div>
+                <div className="card-body">
+                  <table width="100%">
+                    <thead>
+                      <tr>
+                        <td>Details</td>
+                        <td>Qty</td>
+                        <td>Unit(Shs)</td>
+                        <td>Total(Shs)</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>CBC Test</td>
+                        <td>1</td>
+                        <td>3000</td>
+                        <td>3000</td>
+                      </tr>
+                      <tr>
+                        <td>CBC Test</td>
+                        <td>1</td>
+                        <td>3000</td>
+                        <td>3000</td>
+                      </tr>
+                      <tr>
+                        <td>CBC Test</td>
+                        <td>1</td>
+                        <td>3000</td>
+                        <td>3000</td>
+                      </tr>
+                      <tr>
+                        <td>CBC Test</td>
+                        <td>1</td>
+                        <td>3000</td>
+                        <td>3000</td>
+                      </tr>
+                    </tbody>
+                    <thead>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Total</td>
+                        <td>12000</td>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
               </div>
             </div>
           </main>
@@ -130,7 +196,7 @@ export default Payments;
 
 const styles = {
   input_ctr: {
-    width: "75%",
+    width: "50%",
     margin: "auto",
   },
   input_group: {
@@ -139,120 +205,57 @@ const styles = {
     borderRadius: "5px",
     margin: "15px auto",
     display: "flex",
+    flexDirection: "column",
     justifyContent: "space-around",
+    alignItems: "center",
   },
 };
 
 function PaymentDetails() {
   return (
     <div className="inputCtr" style={styles.input_ctr}>
-      <h4>Patient Bio Data</h4>
+      <h4>Payment</h4>
       <div className="inputs_ctr" style={styles.input_group}>
-        <div className="inpts_on_left">
-          <TextField
-            name="surname"
-            variant="outlined"
-            label="Surname"
-            style={{
-              width: "75%",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="first_name"
-            variant="outlined"
-            label="First Name"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="dob"
-            variant="outlined"
-            label="Date Of Birth"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="gender"
-            variant="outlined"
-            label="Gender"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-        </div>
-        <div className="inpts_center">
-          <TextField
-            name="phone_contact"
-            variant="outlined"
-            label="Phone Contact"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="email_address"
-            variant="outlined"
-            label="Email Address:(If Any)"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="pt_occupation"
-            variant="outlined"
-            label="Occupation"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="education_level"
-            variant="outlined"
-            label="Education Level"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-        </div>
-        <div className="inpts_on_right">
-          <TextField
-            name="marital_status"
-            variant="outlined"
-            label="Marital Status"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="religion"
-            variant="outlined"
-            label="Religion"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="tribe"
-            variant="outlined"
-            label="Tribe"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-        </div>
+        <TextField
+          name="patient_number"
+          variant="outlined"
+          label="Patient Number"
+          style={{
+            width: "320px",
+            margin: "20px",
+            display: "block",
+          }}
+        />
+        <TextField
+          name="patient_name"
+          variant="outlined"
+          label="Patient Name"
+          style={{
+            width: "320px",
+            margin: "20px",
+            display: "block",
+          }}
+        />
+        <TextField
+          name="amount"
+          variant="outlined"
+          label="Amount(Shs)"
+          style={{
+            width: "320px",
+            margin: "20px",
+            display: "block",
+          }}
+        />
+        <TextField
+          name="balance"
+          variant="outlined"
+          label="Balance"
+          style={{
+            width: "320px",
+            margin: "20px",
+            display: "block",
+          }}
+        />
       </div>
     </div>
   );
