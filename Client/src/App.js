@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     if (user_logged_in.user === "receptionist") {
       return <Receptionist />;
-    } else if (user_logged_in.user === "receptionist") {
+    } else if (user_logged_in.user === "accounts") {
       return <Accounts />;
     }
   }
