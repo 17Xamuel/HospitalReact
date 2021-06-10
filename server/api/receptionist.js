@@ -2,14 +2,25 @@ const router = require("express").Router();
 const conn = require("../database/db");
 const uuid = require("uuid");
 
+function num(l) {
+  var rc = "ABCDEF1234";
+  var r = "";
+  for (var i = 0; i < l; i++) {
+    r += rc.charAt(Math.floor(Math.random() * rc.length));
+  }
+  let date = new Date();
+  return (
+    (date.getDate() < 10
+      ? "0" + date.getDate().toString()
+      : date.getDate().toString()) +
+    (date.getMonth() < 10
+      ? "0" + (date.getMonth() + 1).toString()
+      : (date.getMonth() + 1).toString()) +
+    r
+  );
+}
+
 router.post("/new_patient", async (req, res) => {
-  console.log(req.body);
-  setTimeout(() => {
-    res.send({ data: "Patient Added", status: true });
-  }, 3000);
-});
-router.post("/new_patient/test", async (req, res) => {
-  console.log(req.body);
   let {
     surname,
     first_name,
@@ -38,27 +49,9 @@ router.post("/new_patient/test", async (req, res) => {
   conn.query(
     `SELECT * FROM patient_details_tbl WHERE patient_details_id = '${patientId}'`,
     (err1, res1) => {
-      if (err1) throw err1;
-      if (res1.length == 0) {
-        conn.query(
-          `INSERT INTO patient_details_tbl SET ?`,
-          {
-            patient_details_id: patientId,
-            first_name: first_name,
-            sur_name: surname,
-            phone_number: phone_contact,
-            DOB: dob,
-            gender: gender,
-            patient_email: email_address,
-            marital_status: marital_status,
-            occupation: pt_occupation,
-            education_level: education_level,
-          },
-          (err_inserting, res_inserting) => {
-            if (err_inserting) throw err_inserting;
-            res.send({ data: "Patient Added", status: true });
-          }
-        );
+      if (err1) {
+        console.log(err1);
+        res.send({ data: "An Error Occurred. Try Again", status: false });
       } else {
         if (res1.length == 0) {
           conn.query(
@@ -80,6 +73,7 @@ router.post("/new_patient/test", async (req, res) => {
               subcounty: sub_county,
               village: village,
               parish: parish,
+              patient_number: num(3),
             },
             (err2, res2) => {
               if (err2) {
