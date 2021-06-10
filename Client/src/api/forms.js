@@ -27,4 +27,13 @@ export default class FormsApi {
       return "Error";
     }
   }
+  async postNewPayment(data) {
+    try {
+      const res = await axios.post(`${url}/user/accounts/new_payment`, data);
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return "Error";
+    }
+  }
 }

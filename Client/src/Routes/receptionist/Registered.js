@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { TextField, Snackbar, Button, IconButton } from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
-import Nav from "../../components/Nav";
-import Header from "../../components/Header";
+import Nav from "./components/Nav";
+import Header from "./components/Header";
 import FormsApi from "../../api/forms";
 
 import "../../design/main.css";
@@ -88,7 +88,7 @@ class Screening extends Component {
                   onSubmit={this.handleSubmit}
                 >
                   <div className="card-header">
-                    <h3>New Patient</h3>
+                    <h3>Patient Screening</h3>
                     <div className="">
                       <Button
                         type="submit"
@@ -146,6 +146,15 @@ function BioData() {
   return (
     <div className="inputCtr" style={styles.input_ctr}>
       <h4>Patient Screening Data</h4>
+      <TextField
+        name="patient_number"
+        variant="outlined"
+        label="Patient Number"
+        style={{
+          width: "200px",
+          margin: "20px 0px",
+        }}
+      />
       <div className="inputs_ctr" style={styles.input_group}>
         <div className="inpts_on_left">
           <TextField
@@ -184,6 +193,8 @@ function BioData() {
               margin: "20px",
             }}
           />
+        </div>
+        <div className="inpts_center">
           <TextField
             name="z_score_weight"
             variant="outlined"
@@ -193,8 +204,6 @@ function BioData() {
               margin: "20px",
             }}
           />
-        </div>
-        <div className="inpts_center">
           <TextField
             name="z_score_height"
             variant="outlined"
@@ -246,15 +255,6 @@ function BioData() {
             name="tobacco_use"
             variant="outlined"
             label="Tobacco Use"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="created_at_date"
-            variant="outlined"
-            label="Date"
             style={{
               width: "240px",
               margin: "20px",

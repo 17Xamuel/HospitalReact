@@ -3,6 +3,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import "../app.css";
 import "line-awesome/dist/line-awesome/css/line-awesome.css";
+import Dashboard from "../Routes/accounts/Dashboard";
+import Payments from "../Routes/accounts/Payments";
 
 class Accounts extends Component {
   constructor(props) {
@@ -14,9 +16,8 @@ class Accounts extends Component {
       <BrowserRouter>
         <div>
           <Switch>
-            {/* <Route path="/" exact component={Dashboard} /> */}
-            {/* <Route path="/new" exact component={NewPatient} /> */}
-            {/* <Route path="/registered" exact component={Registered} /> */}
+            <Route path="/" exact component={Dashboard} />
+            <Route path="/payments" exact component={Payments} />
           </Switch>
         </div>
       </BrowserRouter>
