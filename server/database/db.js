@@ -12,4 +12,5 @@ conn.connect((err) => {
   if (err) throw err;
   console.log("Database Connected....");
 });
+
 module.exports = conn;
