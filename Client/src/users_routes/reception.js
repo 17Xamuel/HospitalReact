@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import "./app.css";
+import "../app.css";
 import "line-awesome/dist/line-awesome/css/line-awesome.css";
-import Dashboard from "./Routes/Dashboard";
-import NewPatient from "./Routes/NewPatient";
-import Registered from "./Routes/Registered";
+import Dashboard from "../Routes/receptionist/Dashboard";
+import NewPatient from "../Routes/receptionist/NewPatient";
+import Screening from "../Routes/receptionist/Registered";
 
 class Receptionist extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class Receptionist extends Component {
           <Switch>
             <Route path="/" exact component={Dashboard} />
             <Route path="/new" exact component={NewPatient} />
-            <Route path="/registered" exact component={Registered} />
+            <Route path="/screening" exact component={Screening} />
           </Switch>
         </div>
       </BrowserRouter>

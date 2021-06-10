@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import "./app.css";
+import "../app.css";
 import "line-awesome/dist/line-awesome/css/line-awesome.css";
-import Dashboard from "./Routes/Dashboard";
-import NewPatient from "./Routes/NewPatient";
-import Registered from "./Routes/Registered";
 
 class Accounts extends Component {
   constructor(props) {
@@ -17,9 +14,9 @@ class Accounts extends Component {
       <BrowserRouter>
         <div>
           <Switch>
-            <Route path="/" exact component={Dashboard} />
-            <Route path="/new" exact component={NewPatient} />
-            <Route path="/registered" exact component={Registered} />
+            {/* <Route path="/" exact component={Dashboard} /> */}
+            {/* <Route path="/new" exact component={NewPatient} /> */}
+            {/* <Route path="/registered" exact component={Registered} /> */}
           </Switch>
         </div>
       </BrowserRouter>
