@@ -30,8 +30,7 @@ class Screening extends Component {
       _fcontent[key] = value;
     });
     const api = new FormsApi();
-    let res = await api.postPatient(_fcontent);
-    console.log(res);
+    let res = await api.postPatientUnit(_fcontent);
     if (res.status === true) {
       this.setState({
         ...this.state,
@@ -150,36 +149,45 @@ function BioData() {
       <div className="inputs_ctr" style={styles.input_group}>
         <div className="inpts_on_left">
           <TextField
-            name="surname"
+            name="muac"
             variant="outlined"
-            label="Surname"
+            label="Muac"
             style={{
               width: "75%",
               margin: "20px",
             }}
           />
           <TextField
-            name="first_name"
+            name="weight"
             variant="outlined"
-            label="First Name"
+            label="Weight(KG)"
             style={{
               width: "240px",
               margin: "20px",
             }}
           />
           <TextField
-            name="dob"
+            name="height"
             variant="outlined"
-            label="Date Of Birth"
+            label="Height"
             style={{
               width: "240px",
               margin: "20px",
             }}
           />
           <TextField
-            name="gender"
+            name="bmi"
             variant="outlined"
-            label="Gender"
+            label="BMI"
+            style={{
+              width: "240px",
+              margin: "20px",
+            }}
+          />
+          <TextField
+            name="z_score_weight"
+            variant="outlined"
+            label="Z Score Weight"
             style={{
               width: "240px",
               margin: "20px",
@@ -188,36 +196,27 @@ function BioData() {
         </div>
         <div className="inpts_center">
           <TextField
-            name="phone_contact"
+            name="z_score_height"
             variant="outlined"
-            label="Phone Contact"
+            label="Z Score height"
             style={{
               width: "240px",
               margin: "20px",
             }}
           />
           <TextField
-            name="email_address"
+            name="blood_pressure"
             variant="outlined"
-            label="Email Address:(If Any)"
+            label="Blood Pressure"
             style={{
               width: "240px",
               margin: "20px",
             }}
           />
           <TextField
-            name="pt_occupation"
+            name="blood_sugar"
             variant="outlined"
-            label="Occupation"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="education_level"
-            variant="outlined"
-            label="Education Level"
+            label="Blood Sugar"
             style={{
               width: "240px",
               margin: "20px",
@@ -226,27 +225,36 @@ function BioData() {
         </div>
         <div className="inpts_on_right">
           <TextField
-            name="marital_status"
+            name="palliative_care"
             variant="outlined"
-            label="Marital Status"
+            label="Palliative Care"
             style={{
               width: "240px",
               margin: "20px",
             }}
           />
           <TextField
-            name="religion"
+            name="patient_classification"
             variant="outlined"
-            label="Religion"
+            label="Patient Classification"
             style={{
               width: "240px",
               margin: "20px",
             }}
           />
           <TextField
-            name="tribe"
+            name="tobacco_use"
             variant="outlined"
-            label="Tribe"
+            label="Tobacco Use"
+            style={{
+              width: "240px",
+              margin: "20px",
+            }}
+          />
+          <TextField
+            name="created_at_date"
+            variant="outlined"
+            label="Date"
             style={{
               width: "240px",
               margin: "20px",

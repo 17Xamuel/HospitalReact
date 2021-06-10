@@ -15,4 +15,16 @@ export default class FormsApi {
       return "Error";
     }
   }
+  async postPatientUnit(data) {
+    try {
+      const res = await axios.post(
+        `${url}/user/receptionist/new_patient_unit`,
+        data
+      );
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return "Error";
+    }
+  }
 }
