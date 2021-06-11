@@ -66,7 +66,7 @@ export default class FormsApi {
   //lab Request
   async newLabRequest(data) {
     try {
-      const res = await axios.post(`${url}/user/doctor/new_diagnosis`, data);
+      const res = await axios.post(`${url}/user/doctor/new_lab_request`, data);
       return res.data;
     } catch (error) {
       console.error(error);
