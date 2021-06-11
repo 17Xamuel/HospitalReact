@@ -30,12 +30,12 @@ class DiagnosisClass extends Component {
       _fcontent[key] = value;
     });
     const api = new FormsApi();
-    let res = await api.postNewPayment(_fcontent);
+    let res = await api.postDiagnosis(_fcontent);
     console.log(res);
     if (res.status === true) {
       this.setState({
         ...this.state,
-        message: "Patient Registered SuccessFully...",
+        message: "Diagnosis Saved SuccessFully...",
         messageState: "success",
       });
     }
@@ -89,38 +89,30 @@ class DiagnosisClass extends Component {
                   onSubmit={this.handleSubmit}
                 >
                   <div className="card-header">
-                    <h3>New Payment</h3>
+                    <h3>Patient Diagnosis</h3>
                     <div className="">
                       <Button
                         type="submit"
                         variant="contained"
                         color="primary"
-                        style={{ marginInline: 10 }}
+                        style={{ marginRight: 10 }}
                       >
                         <span
-                          style={{ fontSize: "17.5px", marginInline: "10px" }}
+                          style={{ fontSize: "17.5px", marginRight: "10px" }}
                         >
                           <i className="las la-print"></i>
                         </span>
-                        Print Receipt
-                      </Button>
-                      <Button variant="contained" color="primary">
-                        See all
-                        <span
-                          style={{ fontSize: "17.5px", marginInline: "10px" }}
-                        >
-                          <span className="las la-arrow-right"></span>
-                        </span>
+                        Print
                       </Button>
                       <Button
                         type="submit"
                         aria-describedby={this.id}
                         variant="contained"
                         color="primary"
-                        style={{ marginInline: 10 }}
+                        style={{ marginLeft: 10 }}
                       >
                         <span
-                          style={{ fontSize: "17.5px", marginInline: "10px" }}
+                          style={{ fontSize: "17.5px", marginRight: "10px" }}
                         >
                           <i className="las la-save"></i>
                         </span>
@@ -139,7 +131,7 @@ class DiagnosisClass extends Component {
                 <div className="card-header">
                   <h3>Diagnosis Details</h3>
                   <Button variant="contained" color="primary">
-                    <span style={{ fontSize: "17.5px", marginInline: "10px" }}>
+                    <span style={{ fontSize: "17.5px", marginRight: "10px" }}>
                       <i className="las la-print"></i>
                     </span>
                     Print
@@ -245,9 +237,10 @@ function Diagnosis() {
           }}
         />
         <TextField
-          name="amount"
+          name="diagnosis"
           variant="outlined"
-          label="Amount(Shs)"
+          label="Diagnosis"
+          multiline
           style={{
             width: "320px",
             margin: "20px",
@@ -255,9 +248,10 @@ function Diagnosis() {
           }}
         />
         <TextField
-          name="balance"
+          name="treatment_notes"
           variant="outlined"
-          label="Balance"
+          multiline
+          label="Treatment Notes"
           style={{
             width: "320px",
             margin: "20px",
