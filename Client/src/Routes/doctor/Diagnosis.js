@@ -11,7 +11,7 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-class Payments extends Component {
+class DiagnosisClass extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -77,7 +77,7 @@ class Payments extends Component {
           </Alert>
         </Snackbar>
         <input type="checkbox" id="nav-toggle" defaultChecked />
-        <Nav active="payments" />
+        <Nav active="diagnosis" />
         <div className="main-content">
           <Header />
           <main>
@@ -130,14 +130,14 @@ class Payments extends Component {
                   </div>
                   <div className="card-body">
                     <div>
-                      <PaymentDetails />
+                      <Diagnosis />
                     </div>
                   </div>
                 </form>
               </div>
               <div className="card">
                 <div className="card-header">
-                  <h3>Payment Details</h3>
+                  <h3>Diagnosis Details</h3>
                   <Button variant="contained" color="primary">
                     <span style={{ fontSize: "17.5px", marginInline: "10px" }}>
                       <i className="las la-print"></i>
@@ -200,7 +200,7 @@ class Payments extends Component {
   }
 }
 
-export default Payments;
+export default DiagnosisClass;
 
 const styles = {
   input_ctr: {
@@ -219,10 +219,10 @@ const styles = {
   },
 };
 
-function PaymentDetails() {
+function Diagnosis() {
   return (
     <div className="inputCtr" style={styles.input_ctr}>
-      <h4>Payment</h4>
+      <h4>Diagnosis</h4>
       <div className="inputs_ctr" style={styles.input_group}>
         <TextField
           name="patient_number"

@@ -28,31 +28,35 @@ class Nav extends Component {
                       }
                     >
                       <span className="las la-igloo"></span>
-                      <span>Dashboard</span>
+                      <span>Home</span>
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link to="/new">
-                    <a
-                      href
-                      className={this.props.active === "new" ? "active" : ""}
-                    >
-                      <span className="las la-users"></span>
-                      <span>New Patient</span>
-                    </a>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/screening">
+                  <Link to="/sample_collection">
                     <a
                       href
                       className={
-                        this.props.active === "screening" ? "active" : ""
+                        this.props.active === "sample_collection"
+                          ? "active"
+                          : ""
                       }
                     >
                       <span className="las la-users"></span>
-                      <span>Screening</span>
+                      <span>Samples</span>
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/lab_report">
+                    <a
+                      href
+                      className={
+                        this.props.active === "lab_report" ? "active" : ""
+                      }
+                    >
+                      <span className="las la-users"></span>
+                      <span>Lab Report</span>
                     </a>
                   </Link>
                 </li>

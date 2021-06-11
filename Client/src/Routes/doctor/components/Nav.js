@@ -28,51 +28,63 @@ class Nav extends Component {
                       }
                     >
                       <span className="las la-igloo"></span>
-                      <span>Dashboard</span>
+                      <span>Home</span>
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link to="/new">
-                    <a
-                      href
-                      className={this.props.active === "new" ? "active" : ""}
-                    >
-                      <span className="las la-users"></span>
-                      <span>New Patient</span>
-                    </a>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/screening">
+                  <Link to="/clinical_information">
                     <a
                       href
                       className={
-                        this.props.active === "screening" ? "active" : ""
+                        this.props.active === "clinical_information"
+                          ? "active"
+                          : ""
                       }
                     >
                       <span className="las la-users"></span>
-                      <span>Screening</span>
+                      <span>Clinical Info.</span>
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <a href>
-                    <span className="las la-receipt"></span>
-                    <span>Inventory</span>
-                  </a>
+                  <Link to="/lab_request">
+                    <a
+                      href
+                      className={
+                        this.props.active === "lab_request" ? "active" : ""
+                      }
+                    >
+                      <span className="las la-users"></span>
+                      <span>Lab Request</span>
+                    </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href>
-                    <span className="las la-user-circle"></span>
-                    <span>Accounts</span>
-                  </a>
+                  <Link to="/diagnosis">
+                    <a
+                      href
+                      className={
+                        this.props.active === "diagnosis" ? "active" : ""
+                      }
+                    >
+                      <span className="las la-users"></span>
+                      <span>Diagnosis</span>
+                    </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href>
-                    <span className="las la-clipboard-list"></span>
-                    <span>Tasks</span>
-                  </a>
+                  <Link to="/referral">
+                    <a
+                      href
+                      className={
+                        this.props.active === "referral" ? "active" : ""
+                      }
+                    >
+                      <span className="las la-users"></span>
+                      <span>Referrals</span>
+                    </a>
+                  </Link>
                 </li>
               </ul>
             </div>

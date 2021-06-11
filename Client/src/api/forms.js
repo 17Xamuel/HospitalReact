@@ -36,4 +36,16 @@ export default class FormsApi {
       return "Error";
     }
   }
+  async postClinicalInfo(data) {
+    try {
+      const res = await axios.post(
+        `${url}/user/accounts/new_clinical_info`,
+        data
+      );
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return "Error";
+    }
+  }
 }
