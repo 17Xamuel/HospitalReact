@@ -11,7 +11,7 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-class Payments extends Component {
+class LabReport extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -77,7 +77,7 @@ class Payments extends Component {
           </Alert>
         </Snackbar>
         <input type="checkbox" id="nav-toggle" defaultChecked />
-        <Nav active="payments" />
+        <Nav active="lab_report" />
         <div className="main-content">
           <Header />
           <main>
@@ -89,38 +89,30 @@ class Payments extends Component {
                   onSubmit={this.handleSubmit}
                 >
                   <div className="card-header">
-                    <h3>New Payment</h3>
+                    <h3>Lab Request</h3>
                     <div className="">
                       <Button
                         type="submit"
                         variant="contained"
                         color="primary"
-                        style={{ marginInline: 10 }}
+                        style={{ marginRight: 10 }}
                       >
                         <span
-                          style={{ fontSize: "17.5px", marginInline: "10px" }}
+                          style={{ fontSize: "17.5px", marginRight: "10px" }}
                         >
                           <i className="las la-print"></i>
                         </span>
-                        Print Receipt
-                      </Button>
-                      <Button variant="contained" color="primary">
-                        See all
-                        <span
-                          style={{ fontSize: "17.5px", marginInline: "10px" }}
-                        >
-                          <span className="las la-arrow-right"></span>
-                        </span>
+                        Print Request
                       </Button>
                       <Button
                         type="submit"
                         aria-describedby={this.id}
                         variant="contained"
                         color="primary"
-                        style={{ marginInline: 10 }}
+                        style={{ marginLeft: "10px" }}
                       >
                         <span
-                          style={{ fontSize: "17.5px", marginInline: "10px" }}
+                          style={{ fontSize: "17.5px", marginRight: "10px" }}
                         >
                           <i className="las la-save"></i>
                         </span>
@@ -200,7 +192,7 @@ class Payments extends Component {
   }
 }
 
-export default Payments;
+export default LabReport;
 
 const styles = {
   input_ctr: {

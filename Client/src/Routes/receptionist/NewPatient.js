@@ -76,7 +76,7 @@ class NewPatient extends Component {
             {this.state.message}
           </Alert>
         </Snackbar>
-        <input type="checkbox" id="nav-toggle" />
+        <input type="checkbox" id="nav-toggle" defaultChecked />
         <Nav active="new" />
         <div className="main-content">
           <Header />

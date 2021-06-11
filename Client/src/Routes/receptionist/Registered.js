@@ -75,7 +75,7 @@ class Screening extends Component {
             {this.state.message}
           </Alert>
         </Snackbar>
-        <input type="checkbox" id="nav-toggle" />
+        <input type="checkbox" id="nav-toggle" defaultChecked />
         <Nav active="screening" />
         <div className="main-content">
           <Header />

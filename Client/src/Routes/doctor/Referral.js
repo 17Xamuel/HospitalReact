@@ -11,7 +11,7 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-class Payments extends Component {
+class Referral extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -77,7 +77,7 @@ class Payments extends Component {
           </Alert>
         </Snackbar>
         <input type="checkbox" id="nav-toggle" defaultChecked />
-        <Nav active="payments" />
+        <Nav active="referral" />
         <div className="main-content">
           <Header />
           <main>
@@ -130,7 +130,7 @@ class Payments extends Component {
                   </div>
                   <div className="card-body">
                     <div>
-                      <PaymentDetails />
+                      <ReferralDetails />
                     </div>
                   </div>
                 </form>
@@ -200,7 +200,7 @@ class Payments extends Component {
   }
 }
 
-export default Payments;
+export default Referral;
 
 const styles = {
   input_ctr: {
@@ -219,7 +219,7 @@ const styles = {
   },
 };
 
-function PaymentDetails() {
+function ReferralDetails() {
   return (
     <div className="inputCtr" style={styles.input_ctr}>
       <h4>Payment</h4>
