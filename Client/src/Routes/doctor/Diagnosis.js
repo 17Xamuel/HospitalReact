@@ -31,7 +31,6 @@ class DiagnosisClass extends Component {
     });
     const api = new FormsApi();
     let res = await api.postDiagnosis(_fcontent);
-    console.log(res);
     if (res.status === true) {
       this.setState({
         ...this.state,
@@ -92,7 +91,6 @@ class DiagnosisClass extends Component {
                     <h3>Patient Diagnosis</h3>
                     <div className="">
                       <Button
-                        type="submit"
                         variant="contained"
                         color="primary"
                         style={{ marginRight: 10 }}

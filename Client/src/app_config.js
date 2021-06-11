@@ -1,3 +1,5 @@
-export default {
-  user: "lab",
+const user = {
+  user: null,
 };
+
+export default user;

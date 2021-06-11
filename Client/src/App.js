@@ -4,6 +4,7 @@ import Receptionist from "./users_routes/reception";
 import Accounts from "./users_routes/accounts";
 import Doctor from "./users_routes/doctor";
 import Lab from "./users_routes/lab";
+import Login from "./components/Login";
 
 class App extends Component {
   constructor(props) {
@@ -21,6 +22,8 @@ class App extends Component {
       return <Doctor />;
     } else if (user_logged_in.user === "lab") {
       return <Lab />;
+    } else {
+      return <Login />;
     }
   }
 }
