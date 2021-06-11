@@ -11,7 +11,7 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-class Payments extends Component {
+class LabRequest extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,12 +30,12 @@ class Payments extends Component {
       _fcontent[key] = value;
     });
     const api = new FormsApi();
-    let res = await api.postNewPayment(_fcontent);
+    let res = await api.newLabRequest(_fcontent);
     console.log(res);
     if (res.status === true) {
       this.setState({
         ...this.state,
-        message: "Patient Registered SuccessFully...",
+        message: "Lab Request Added...",
         messageState: "success",
       });
     }
@@ -122,14 +122,14 @@ class Payments extends Component {
                   </div>
                   <div className="card-body">
                     <div>
-                      <PaymentDetails />
+                      <Request />
                     </div>
                   </div>
                 </form>
               </div>
               <div className="card">
                 <div className="card-header">
-                  <h3>Payment Details</h3>
+                  <h3>Request Details</h3>
                   <Button variant="contained" color="primary">
                     <span style={{ fontSize: "17.5px", marginInline: "10px" }}>
                       <i className="las la-print"></i>
@@ -192,7 +192,7 @@ class Payments extends Component {
   }
 }
 
-export default Payments;
+export default LabRequest;
 
 const styles = {
   input_ctr: {
@@ -211,10 +211,10 @@ const styles = {
   },
 };
 
-function PaymentDetails() {
+function Request() {
   return (
     <div className="inputCtr" style={styles.input_ctr}>
-      <h4>Payment</h4>
+      <h4>Lab Request</h4>
       <div className="inputs_ctr" style={styles.input_group}>
         <TextField
           name="patient_number"
@@ -237,9 +237,10 @@ function PaymentDetails() {
           }}
         />
         <TextField
-          name="amount"
+          name="tests_required"
           variant="outlined"
-          label="Amount(Shs)"
+          label="Tests Required"
+          multiline
           style={{
             width: "320px",
             margin: "20px",
@@ -247,9 +248,10 @@ function PaymentDetails() {
           }}
         />
         <TextField
-          name="balance"
+          name="specimens"
           variant="outlined"
-          label="Balance"
+          label="Specimens"
+          multiline
           style={{
             width: "320px",
             margin: "20px",
