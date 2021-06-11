@@ -67,4 +67,26 @@ router.post("/new_lab_request", async (req, res) => {
   );
 });
 
+router.post("/new_referral", async (req, res) => {
+  let { patient_number, refer_to, reason } = req.body;
+  conn.query(
+    `INSERT INTO referrals_tbl SET ?`,
+    {
+      patient_id: patient_number,
+      refer_to: refer_to,
+      reason_for: reason,
+      user_id: 1,
+      refer_date: new Date(),
+    },
+    (err1, res1) => {
+      if (err1) {
+        console.log(err1);
+        res.send({ data: "An Error Occured. Try Again", status: false });
+      } else {
+        res.send({ data: "Referral Submitted", status: true });
+      }
+    }
+  );
+});
+
 module.exports = router;
