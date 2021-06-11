@@ -213,7 +213,7 @@ const styles = {
 function LabReportdDetails() {
   return (
     <div className="inputCtr" style={styles.input_ctr}>
-      <h4>Payment</h4>
+      <h4>Results</h4>
       <div className="inputs_ctr" style={styles.input_group}>
         <TextField
           name="patient_number"
