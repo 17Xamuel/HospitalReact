@@ -10,6 +10,7 @@ router.post("/new_clinical_info", async (req, res) => {
       clinical_notes: clinical_notes,
       therapy: therapy,
       user_id: 1,
+      date: new Date(),
     },
     (err1, res1) => {
       if (err1) {
@@ -31,6 +32,7 @@ router.post("/new_diagnosis", async (req, res) => {
       treatment_notes: treatment_notes,
       diagnosis: diagnosis,
       user_id: 1,
+      date: new Date(),
     },
     (err1, res1) => {
       if (err1) {
@@ -52,6 +54,7 @@ router.post("/new_lab_request", async (req, res) => {
       test_required: tests_required,
       type_of_specimen: specimens,
       user_id: 1,
+      date: new Date(),
     },
     (err1, res1) => {
       if (err1) {
