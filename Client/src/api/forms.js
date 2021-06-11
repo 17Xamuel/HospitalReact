@@ -73,4 +73,38 @@ export default class FormsApi {
       return "Error";
     }
   }
+
+  //Referral from doctor
+  async newReferral(data) {
+    try {
+      const res = await axios.post(`${url}/user/doctor/new_referral`, data);
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return "Error";
+    }
+  }
+  //Report From Lab Technician
+  async newSampleCollection(data) {
+    try {
+      const res = await axios.post(
+        `${url}/user/lab/new_sample_collection`,
+        data
+      );
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return "Error";
+    }
+  }
+  //Report From Lab Technician
+  async newLabReport(data) {
+    try {
+      const res = await axios.post(`${url}/user/lab/new_lab_report`, data);
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return "Error";
+    }
+  }
 }

@@ -30,12 +30,11 @@ class LabReport extends Component {
       _fcontent[key] = value;
     });
     const api = new FormsApi();
-    let res = await api.postNewPayment(_fcontent);
-    console.log(res);
+    let res = await api.newLabReport(_fcontent);
     if (res.status === true) {
       this.setState({
         ...this.state,
-        message: "Patient Registered SuccessFully...",
+        message: "Report Added SuccessFully...",
         messageState: "success",
       });
     }
@@ -89,7 +88,7 @@ class LabReport extends Component {
                   onSubmit={this.handleSubmit}
                 >
                   <div className="card-header">
-                    <h3>Lab Request</h3>
+                    <h3>Lab Report</h3>
                     <div className="">
                       <Button
                         type="submit"
@@ -102,7 +101,7 @@ class LabReport extends Component {
                         >
                           <i className="las la-print"></i>
                         </span>
-                        Print Request
+                        Print Report
                       </Button>
                       <Button
                         type="submit"
@@ -122,16 +121,16 @@ class LabReport extends Component {
                   </div>
                   <div className="card-body">
                     <div>
-                      <PaymentDetails />
+                      <LabReportdDetails />
                     </div>
                   </div>
                 </form>
               </div>
               <div className="card">
                 <div className="card-header">
-                  <h3>Payment Details</h3>
+                  <h3>Report Details</h3>
                   <Button variant="contained" color="primary">
-                    <span style={{ fontSize: "17.5px", marginInline: "10px" }}>
+                    <span style={{ fontSize: "17.5px", marginRight: "10px" }}>
                       <i className="las la-print"></i>
                     </span>
                     Print
@@ -211,7 +210,7 @@ const styles = {
   },
 };
 
-function PaymentDetails() {
+function LabReportdDetails() {
   return (
     <div className="inputCtr" style={styles.input_ctr}>
       <h4>Payment</h4>
@@ -237,9 +236,10 @@ function PaymentDetails() {
           }}
         />
         <TextField
-          name="amount"
+          name="tests_made"
           variant="outlined"
-          label="Amount(Shs)"
+          multiline
+          label="Tests Made"
           style={{
             width: "320px",
             margin: "20px",
@@ -247,9 +247,9 @@ function PaymentDetails() {
           }}
         />
         <TextField
-          name="balance"
+          name="results"
           variant="outlined"
-          label="Balance"
+          label="Tests Result"
           style={{
             width: "320px",
             margin: "20px",

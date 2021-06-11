@@ -5,6 +5,7 @@ import "../app.css";
 import "line-awesome/dist/line-awesome/css/line-awesome.css";
 import Dashboard from "../Routes/accounts/Dashboard";
 import Payments from "../Routes/accounts/Payments";
+import NotFound from "../components/404";
 
 class Accounts extends Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class Accounts extends Component {
           <Switch>
             <Route path="/" exact component={Dashboard} />
             <Route path="/payments" exact component={Payments} />
+            <Route path="*" component={NotFound} />
           </Switch>
         </div>
       </BrowserRouter>

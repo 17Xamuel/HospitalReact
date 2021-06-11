@@ -30,12 +30,12 @@ class Referral extends Component {
       _fcontent[key] = value;
     });
     const api = new FormsApi();
-    let res = await api.postNewPayment(_fcontent);
+    let res = await api.newReferral(_fcontent);
     console.log(res);
     if (res.status === true) {
       this.setState({
         ...this.state,
-        message: "Patient Registered SuccessFully...",
+        message: "Referral Added...",
         messageState: "success",
       });
     }
@@ -89,38 +89,30 @@ class Referral extends Component {
                   onSubmit={this.handleSubmit}
                 >
                   <div className="card-header">
-                    <h3>New Payment</h3>
+                    <h3>Patient Referral</h3>
                     <div className="">
                       <Button
                         type="submit"
                         variant="contained"
                         color="primary"
-                        style={{ marginInline: 10 }}
+                        style={{ marginRight: 10 }}
                       >
                         <span
-                          style={{ fontSize: "17.5px", marginInline: "10px" }}
+                          style={{ fontSize: "17.5px", marginRight: "10px" }}
                         >
                           <i className="las la-print"></i>
                         </span>
-                        Print Receipt
-                      </Button>
-                      <Button variant="contained" color="primary">
-                        See all
-                        <span
-                          style={{ fontSize: "17.5px", marginInline: "10px" }}
-                        >
-                          <span className="las la-arrow-right"></span>
-                        </span>
+                        Print Referral
                       </Button>
                       <Button
                         type="submit"
                         aria-describedby={this.id}
                         variant="contained"
                         color="primary"
-                        style={{ marginInline: 10 }}
+                        style={{ marginLeft: 10 }}
                       >
                         <span
-                          style={{ fontSize: "17.5px", marginInline: "10px" }}
+                          style={{ fontSize: "17.5px", marginRight: "10px" }}
                         >
                           <i className="las la-save"></i>
                         </span>
@@ -137,9 +129,9 @@ class Referral extends Component {
               </div>
               <div className="card">
                 <div className="card-header">
-                  <h3>Payment Details</h3>
+                  <h3>Referral Details</h3>
                   <Button variant="contained" color="primary">
-                    <span style={{ fontSize: "17.5px", marginInline: "10px" }}>
+                    <span style={{ fontSize: "17.5px", marginRight: "10px" }}>
                       <i className="las la-print"></i>
                     </span>
                     Print
@@ -222,7 +214,7 @@ const styles = {
 function ReferralDetails() {
   return (
     <div className="inputCtr" style={styles.input_ctr}>
-      <h4>Payment</h4>
+      <h4>Referral</h4>
       <div className="inputs_ctr" style={styles.input_group}>
         <TextField
           name="patient_number"
@@ -245,9 +237,9 @@ function ReferralDetails() {
           }}
         />
         <TextField
-          name="amount"
+          name="refer_to"
           variant="outlined"
-          label="Amount(Shs)"
+          label="Department"
           style={{
             width: "320px",
             margin: "20px",
@@ -255,9 +247,9 @@ function ReferralDetails() {
           }}
         />
         <TextField
-          name="balance"
+          name="reason"
           variant="outlined"
-          label="Balance"
+          label="Reason For Referral"
           style={{
             width: "320px",
             margin: "20px",
