@@ -2,8 +2,18 @@ const router = require("express").Router();
 const conn = require("../database/db");
 
 router.post("/login", (req, res) => {
-  console.log("Req", req.body);
-  res.send({ data: false });
+  conn.query(
+    `SELECT * FROM system_users WHERE user_name=? AND password=?`,
+    [req.body.username, req.body.password],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+        res.send({ status: false });
+      } else {
+        res.send({ status: true, user: result[0] });
+      }
+    }
+  );
 });
 
 module.exports = router;
