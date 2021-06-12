@@ -3,9 +3,6 @@
   font-weight: 500;
 }
 
-.m-ctr {
-}
-
 .ctr {
   position: absolute;
   left: 120px;
@@ -25,4 +22,20 @@
   position: absolute;
   top: 0px;
   right: 0px;
+}
+@media screen and (max-width: 1024px) {
+  .img {
+    display: none;
+  }
+  .m-ctr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ctr {
+    position: relative;
+    left: 0;
+    right: 0;
+    border-radius: 5px;
+  }
 }
