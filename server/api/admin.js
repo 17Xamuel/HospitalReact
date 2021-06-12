@@ -10,7 +10,9 @@ router.post("/login", async (req, res) => {
         console.log(err);
         res.send({ status: false });
       } else {
-        res.send({ status: true, user: result[0] });
+        result.length == 0
+          ? res.send({ status: false })
+          : res.send({ status: true, user: result[0] });
       }
     }
   );
