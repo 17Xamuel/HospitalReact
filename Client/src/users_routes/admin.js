@@ -10,6 +10,7 @@ import Patients from "../Routes/admin/patients";
 import Users from "../Routes/admin/users";
 import Register from "../Routes/admin/New_user";
 import Patient from "../Routes/admin/patient";
+import Payments from "../Routes/admin/payments";
 import NotFound from "../components/404";
 
 class Admin extends Component {
@@ -29,6 +30,7 @@ class Admin extends Component {
             <Route path="/patients" exact component={Patients} />
             <Route path="/users" exact component={Users} />
             <Route path="/register" exact component={Register} />
+            <Route path="/payments" exact component={Payments} />
             <Route path="/patient_details" exact component={Patient} />
             <Route path="*" component={NotFound} />
           </Switch>
