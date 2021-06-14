@@ -1,5 +1,5 @@
 const user = {
-  user: null,
+  user: "admin",
 };
 
 export default user;

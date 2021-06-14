@@ -107,4 +107,34 @@ export default class FormsApi {
       return "Error";
     }
   }
+  //New Test
+  async postNewTest(data) {
+    try {
+      const res = await axios.post(`${url}/user/admin/new_test`, data);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+      return "Error";
+    }
+  }
+  //New Department
+  async postNewDepartment(data) {
+    try {
+      const res = await axios.post(`${url}/user/admin/new_department`, data);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+      return "Error";
+    }
+  }
+  //New User
+  async postUser(data) {
+    try {
+      const res = await axios.post(`${url}/user/admin/new_user`, data);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+      return "Error";
+    }
+  }
 }
