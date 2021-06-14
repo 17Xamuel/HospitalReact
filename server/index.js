@@ -12,6 +12,7 @@ app.use("/api/user/doctor/", require("./api/doctor"));
 app.use("/api/user/accounts/", require("./api/accounts"));
 app.use("/api/user/receptionist/", require("./api/receptionist"));
 app.use("/api/user/admin/", require("./api/admin"));
+app.use("/api/user/all/", require("./api/users"));
 
 app.listen(PORT, () => {
   console.log(`Server started on Port ${PORT}....`);

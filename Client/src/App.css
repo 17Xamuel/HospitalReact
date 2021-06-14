@@ -216,6 +216,8 @@ main {
 }
 .card-single div:first-child span {
   color: var(--text-grey);
+  font-size: 18px;
+  padding: 20px 0px;
 }
 .card-single:last-child {
   background-color: var(--main-color);
