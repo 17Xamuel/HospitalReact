@@ -2,14 +2,18 @@
   font-size: 30px;
   font-weight: 500;
 }
-
+.m-ctr {
+  background-color: #fff !important;
+}
 .ctr {
+  z-index: 20;
   position: absolute;
-  left: 120px;
-  top: 120px;
+  left: 150px;
+  top: 75px;
   padding: 30px;
   border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  box-shadow: 8px 8px 30px #d1d1d1, -8px -8px 30px #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -3,27 +3,35 @@ import { TextField, Button } from "@material-ui/core";
 import UsersApi from "../api/users";
 import Image from "../assets/doctor.png";
 import Logo from "../assets/logo_hospital.png";
-
+import base64 from "base-64";
 //design
 import "./login.css";
 
 function Login() {
   const [user, setUser] = useState({ username: "", password: "", _cp: true });
-
   const handleClick = async (e) => {
     const res = await UsersApi.login({
       username: user.username,
       password: user.password,
     });
-    if (res.data === false) {
+    if (res.status === false) {
       setUser({ ...user, _cp: false });
       return;
+    } else {
+      const data = base64.encode(res.user);
+      localStorage.setItem("key", data);
+      localStorage.setItem("user", "doctor");
+      window.location.replace("/");
     }
   };
   return (
-    <div style={{ width: "100%", height: "100%" }} className="m-ctr">
+    <div
+      style={{ width: "100%", height: "100%", backgroundColor: "white" }}
+      className="m-ctr"
+    >
       <div className="ctr">
         <img
+          alt="Hospital"
           src={Logo}
           height="120px"
           width="150px"
@@ -87,7 +95,7 @@ function Login() {
           </Button>
         </div>
       </div>
-      <img src={Image} className="img" />
+      <img src={Image} className="img" alt="Hospital" />
     </div>
   );
 }
