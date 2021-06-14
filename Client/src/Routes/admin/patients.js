@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Button, IconButton } from "@material-ui/core";
 import Nav from "./components/Nav";
 import Header from "./components/Header";
@@ -62,9 +63,33 @@ class Patients extends Component {
                                   style={{ color: "dodgerblue" }}
                                 ></i>
                               </IconButton>
+                              <Link to="/patient_details">
+                                <IconButton>
+                                  <i
+                                    className="las la-eye"
+                                    style={{ color: "dodgerblue" }}
+                                  ></i>
+                                </IconButton>
+                              </Link>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Sam</td>
+                          <td>0789435123</td>
+                          <td>Lira</td>
+                          <td>04/03/2000</td>
+                          <td>
+                            <div>
                               <IconButton>
                                 <i
-                                  className="las la-trash"
+                                  className="las la-edit"
+                                  style={{ color: "dodgerblue" }}
+                                ></i>
+                              </IconButton>
+                              <IconButton>
+                                <i
+                                  className="las la-eye"
                                   style={{ color: "dodgerblue" }}
                                 ></i>
                               </IconButton>
@@ -86,7 +111,7 @@ class Patients extends Component {
                               </IconButton>
                               <IconButton>
                                 <i
-                                  className="las la-trash"
+                                  className="las la-eye"
                                   style={{ color: "dodgerblue" }}
                                 ></i>
                               </IconButton>
@@ -108,7 +133,7 @@ class Patients extends Component {
                               </IconButton>
                               <IconButton>
                                 <i
-                                  className="las la-trash"
+                                  className="las la-eye"
                                   style={{ color: "dodgerblue" }}
                                 ></i>
                               </IconButton>
@@ -130,29 +155,7 @@ class Patients extends Component {
                               </IconButton>
                               <IconButton>
                                 <i
-                                  className="las la-trash"
-                                  style={{ color: "dodgerblue" }}
-                                ></i>
-                              </IconButton>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Sam</td>
-                          <td>0789435123</td>
-                          <td>Lira</td>
-                          <td>04/03/2000</td>
-                          <td>
-                            <div>
-                              <IconButton>
-                                <i
-                                  className="las la-edit"
-                                  style={{ color: "dodgerblue" }}
-                                ></i>
-                              </IconButton>
-                              <IconButton>
-                                <i
-                                  className="las la-trash"
+                                  className="las la-eye"
                                   style={{ color: "dodgerblue" }}
                                 ></i>
                               </IconButton>

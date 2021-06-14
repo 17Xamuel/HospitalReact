@@ -21,64 +21,63 @@ class Nav extends Component {
               <ul>
                 <li>
                   <Link to="/">
-                    <a
-                      href
-                      className={
+                    <span
+                      className={`${
                         this.props.active === "dashboard" ? "active" : ""
-                      }
+                      } _a_replaced`}
                     >
-                      <span className="las la-igloo"></span>
-                      <span>Dashboard</span>
-                    </a>
+                      <span className="las la-home"></span>
+                      <span>Home</span>
+                    </span>
                   </Link>
                 </li>
 
                 <li>
                   <Link to="/departments">
-                    <a
-                      href
-                      className={
+                    <span
+                      className={`${
                         this.props.active === "departments" ? "active" : ""
-                      }
+                      } _a_replaced`}
                     >
                       <span className="las la-users"></span>
                       <span>Departments</span>
-                    </a>
+                    </span>
                   </Link>
                 </li>
                 <li>
                   <Link to="/patients">
-                    <a
-                      href
-                      className={
+                    <span
+                      className={`${
                         this.props.active === "patients" ? "active" : ""
-                      }
+                      } _a_replaced`}
                     >
                       <span className="las la-users"></span>
                       <span>Patients</span>
-                    </a>
+                    </span>
                   </Link>
                 </li>
                 <li>
                   <Link to="/tests">
-                    <a
-                      href
-                      className={this.props.active === "tests" ? "active" : ""}
+                    <span
+                      className={`${
+                        this.props.active === "tests" ? "active" : ""
+                      } _a_replaced`}
                     >
                       <span className="las la-users"></span>
                       <span>Tests</span>
-                    </a>
+                    </span>
                   </Link>
                 </li>
                 <li>
                   <Link to="/users">
-                    <a
-                      href
-                      className={this.props.active === "users" ? "active" : ""}
+                    <span
+                      className={`${
+                        this.props.active === "users" ? "active" : ""
+                      } _a_replaced`}
                     >
                       <span className="las la-users"></span>
                       <span>Users</span>
-                    </a>
+                    </span>
                   </Link>
                 </li>
               </ul>

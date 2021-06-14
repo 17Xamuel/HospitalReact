@@ -1,5 +1,14 @@
 import React, { Component } from "react";
-import { TextField, Snackbar, Button, IconButton } from "@material-ui/core";
+import {
+  TextField,
+  Snackbar,
+  Button,
+  IconButton,
+  Select,
+  InputLabel,
+  FormControl,
+  MenuItem,
+} from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
 import Nav from "./components/Nav";
 import Header from "./components/Header";
@@ -174,17 +183,46 @@ function UserDetails() {
               margin: "20px",
             }}
           />
-          <TextField
-            name="gender"
+          <FormControl
             variant="outlined"
             label="Gender"
             style={{
               width: "240px",
               margin: "20px",
             }}
-          />
+          >
+            <InputLabel id="gender">Gender</InputLabel>
+            <Select
+              inputProps={{ name: "gender" }}
+              id="select_gender"
+              label="Gender"
+            >
+              <MenuItem value="M">Male</MenuItem>
+              <MenuItem value="F">Female</MenuItem>
+            </Select>
+          </FormControl>
         </div>
         <div className="inpts_center">
+          <FormControl
+            variant="outlined"
+            label="Department"
+            style={{
+              width: "240px",
+              margin: "20px",
+            }}
+          >
+            <InputLabel id="department">Department</InputLabel>
+            <Select
+              inputProps={{ name: "department" }}
+              label="Department"
+              id="select_department"
+            >
+              <MenuItem value="1">Labaratory</MenuItem>
+              <MenuItem value="2">OPD</MenuItem>
+              <MenuItem value="3">Accounts</MenuItem>
+              <MenuItem value="4">Martenity</MenuItem>
+            </Select>
+          </FormControl>
           <TextField
             name="phone_contact"
             variant="outlined"
@@ -207,15 +245,6 @@ function UserDetails() {
             name="role"
             variant="outlined"
             label="Role"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="department"
-            variant="outlined"
-            label="Department"
             style={{
               width: "240px",
               margin: "20px",
