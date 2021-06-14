@@ -346,7 +346,7 @@ class NewPatient extends Component {
                         <div className="inputCtr">
                           <h4>Patient Address</h4>
                           <div className="inputs_ctr">
-                            <div className="inpts_left">
+                            <div className="inpts_on_left">
                               <TextField
                                 name="district"
                                 variant="outlined"
@@ -375,7 +375,7 @@ class NewPatient extends Component {
                                 }}
                               />
                             </div>
-                            <div className="inputs_center">
+                            <div className="inpts_center">
                               <TextField
                                 name="village"
                                 variant="outlined"
@@ -404,7 +404,7 @@ class NewPatient extends Component {
                                 }}
                               />
                             </div>
-                            <div className="inpts_right">
+                            <div className="inpts_on_right">
                               <TextField
                                 name="nk_surname"
                                 variant="outlined"

@@ -1,5 +1,5 @@
 const user = {
-  user: "receptionist",
+  user: "accounts",
 };
 
 export default user;
