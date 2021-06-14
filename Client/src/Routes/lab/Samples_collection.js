@@ -77,7 +77,7 @@ class SampleCollection extends Component {
           </Alert>
         </Snackbar>
         <input type="checkbox" id="nav-toggle" defaultChecked />
-        <Nav active="sample_collection" />
+        <Nav active="samples" />
         <div className="main-content">
           <Header />
           <main>

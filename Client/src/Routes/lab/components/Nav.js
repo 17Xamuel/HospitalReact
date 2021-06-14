@@ -38,7 +38,7 @@ class Nav extends Component {
                   <Link to="/sample_collection">
                     <span
                       className={`${
-                        this.props.active === "dashboard" ? "active" : ""
+                        this.props.active === "samples" ? "active" : ""
                       } _a_replaced`}
                     >
                       <span className="las la-users"></span>
