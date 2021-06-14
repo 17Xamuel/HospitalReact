@@ -1,25 +1,35 @@
-.input_ctr {
+.form-header-ctr {
   width: 75%;
-  margin: "auto";
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.input_group {
-  width: "100%";
-  border: "1px solid rgba(0,0,0,0.1)";
-  border-radius: "5px";
-  margin: "15px auto";
-  display: "flex";
-  justify-content: "space-around";
+
+.inputCtr {
+  width: 75%;
+  margin: auto;
 }
-.text_field {
-  width: "75%";
-  margin: "20px";
+.inputs_ctr {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin: 15px auto;
+  display: flex;
+  justify-content: space-around;
 }
 @media screen and (max-width: 1024px) {
-  .input_group {
-    flex-direction: column;
+  .form-header-ctr {
+    width: 100%;
+
+    align-items: center;
   }
-  .text_field {
-    width: "75%";
-    margin: "20px";
+
+  .inputCtr {
+    width: 100%;
+    margin: auto;
+  }
+  .inputs_ctr {
+    flex-direction: column;
   }
 }

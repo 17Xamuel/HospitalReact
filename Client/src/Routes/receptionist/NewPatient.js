@@ -1,11 +1,21 @@
 import React, { Component } from "react";
-import { TextField, Snackbar, Button, IconButton } from "@material-ui/core";
+import {
+  TextField,
+  Snackbar,
+  Button,
+  IconButton,
+  Select,
+  InputLabel,
+  FormControl,
+  MenuItem,
+} from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
 import Nav from "./components/Nav";
 import Header from "./components/Header";
 import FormsApi from "../../api/forms";
 
 import "../../design/main.css";
+import "../../design/forms.css";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -18,6 +28,9 @@ class NewPatient extends Component {
       open: false,
       message: "Please Wait...",
       messageState: "",
+      currentTab: 0,
+      backTabButtonClickable: false,
+      submitButton: false,
     };
   }
 
@@ -31,7 +44,6 @@ class NewPatient extends Component {
     });
     const api = new FormsApi();
     let res = await api.postPatient(_fcontent);
-    console.log(res);
     if (res.status === true) {
       this.setState({
         ...this.state,
@@ -41,13 +53,31 @@ class NewPatient extends Component {
     }
   };
 
-  closePopUp = (event, reason) => {
+  closePopUp = (reason) => {
     if (reason === "clickaway") {
       return;
     }
     this.setState({ ...this.state, open: false });
   };
 
+  handleSlideForward = () => {
+    this.setState({
+      ...this.state,
+      submitButton: true,
+      currentTab: 1,
+    });
+  };
+  handleSlideBack = () => {
+    if (this.state.currentTab === 0) {
+      return;
+    } else {
+      this.setState({
+        ...this.state,
+        submitButton: false,
+        currentTab: this.state.currentTab - 1,
+      });
+    }
+  };
   render() {
     return (
       <>
@@ -88,34 +118,358 @@ class NewPatient extends Component {
                   autoComplete="off"
                   onSubmit={this.handleSubmit}
                 >
-                  <div className="card-header">
-                    <h3>New Patient</h3>
-                    <div className="">
-                      <Button
-                        type="submit"
-                        aria-describedby={this.id}
-                        variant="contained"
-                        color="primary"
-                        style={{ marginInline: 10 }}
-                      >
-                        Cancel
-                      </Button>
-                      <Button
-                        type="submit"
-                        aria-describedby={this.id}
-                        variant="contained"
-                        color="primary"
-                        style={{ marginInline: 10 }}
-                      >
-                        Save
-                      </Button>
+                  <div
+                    className=""
+                    style={{
+                      borderBottom: "1px solid #f0f0f0",
+                      padding: "1rem",
+                    }}
+                  >
+                    <div className="form-header-ctr">
+                      <div className="">
+                        {/* <h3>New Patient</h3> */}
+                        <TextField
+                          name="patient_number"
+                          variant="outlined"
+                          label="Patient Number"
+                          style={{
+                            width: "250px",
+                            margin: "20px 0px",
+                          }}
+                        />
+                      </div>
+
+                      <div className="">
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          style={{ marginRight: 10 }}
+                        >
+                          Cancel
+                        </Button>
+                        <Button
+                          type="submit"
+                          aria-describedby={this.id}
+                          variant="contained"
+                          color="primary"
+                          style={{ marginLeft: 10 }}
+                          disabled={!this.state.submitButton}
+                        >
+                          Save
+                        </Button>
+                      </div>
                     </div>
                   </div>
                   <div className="card-body">
                     <div>
-                      <BioData />
-                      <Address />
-                      <NextOfKin />
+                      <div
+                        className=""
+                        style={
+                          this.state.currentTab === 0
+                            ? { display: "block" }
+                            : { display: "none" }
+                        }
+                      >
+                        <div className="inputCtr">
+                          <h4>Patient Bio Data</h4>
+                          <div className="inputs_ctr">
+                            <div className="inpts_on_left">
+                              <TextField
+                                name="surname"
+                                variant="outlined"
+                                type=""
+                                label="Surname"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px",
+                                }}
+                              />
+                              <TextField
+                                name="first_name"
+                                variant="outlined"
+                                label="First Name"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px",
+                                }}
+                              />
+                              <TextField
+                                name="dob"
+                                variant="outlined"
+                                // label="Date Of Birth"
+                                helperText="Date of Birth"
+                                type="date"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px 20px 0px 20px",
+                                }}
+                              />
+                              <FormControl
+                                variant="outlined"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px",
+                                }}
+                              >
+                                <InputLabel id="gender">Gender</InputLabel>
+                                <Select
+                                  inputProps={{ name: "gender" }}
+                                  labelId="gender"
+                                  id="select_gender"
+                                  label="Gender"
+                                >
+                                  <MenuItem value="M">Male</MenuItem>
+                                  <MenuItem value="F">Female</MenuItem>
+                                </Select>
+                              </FormControl>
+                            </div>
+                            <div className="inpts_center">
+                              <TextField
+                                name="phone_contact"
+                                variant="outlined"
+                                label="Phone Contact"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px",
+                                }}
+                              />
+                              <TextField
+                                name="email_address"
+                                variant="outlined"
+                                label="Email Address:(If Any)"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px",
+                                }}
+                              />
+                              <TextField
+                                name="pt_occupation"
+                                variant="outlined"
+                                label="Occupation"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px",
+                                }}
+                              />
+                              <TextField
+                                name="education_level"
+                                variant="outlined"
+                                label="Education Level"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px",
+                                }}
+                              />
+                            </div>
+                            <div className="inpts_on_right">
+                              <FormControl
+                                variant="outlined"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px",
+                                }}
+                              >
+                                <InputLabel id="marital_status">
+                                  Marital Status
+                                </InputLabel>
+                                <Select
+                                  inputProps={{ name: "marital_status" }}
+                                  labelId="marital_status"
+                                  id="select_marital_status"
+                                  label="Marital Status"
+                                >
+                                  <MenuItem value="Single">Single</MenuItem>
+                                  <MenuItem value="Married">Married</MenuItem>
+                                  <MenuItem value="Divorced">Divorced</MenuItem>
+                                </Select>
+                              </FormControl>
+                              <FormControl
+                                variant="outlined"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px",
+                                }}
+                              >
+                                <InputLabel id="religion">Religion</InputLabel>
+                                <Select
+                                  inputProps={{ name: "religion" }}
+                                  labelId="religion"
+                                  id="select_religion"
+                                  label="Religion"
+                                >
+                                  <MenuItem value="Christian">
+                                    Christian
+                                  </MenuItem>
+                                  <MenuItem value="Muslim">Muslim</MenuItem>
+                                  <MenuItem value="Pentecostal">
+                                    Pentecostal
+                                  </MenuItem>
+                                </Select>
+                              </FormControl>
+                              <TextField
+                                name="age"
+                                variant="outlined"
+                                label="Age"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px",
+                                }}
+                              />
+                            </div>
+                          </div>
+                          <div
+                            className=""
+                            style={{
+                              display: "flex",
+                              justifyContent: "flex-end",
+                            }}
+                          >
+                            <Button
+                              variant="contained"
+                              color="primary"
+                              style={{ marginLeft: 10 }}
+                              onClick={this.handleSlideForward}
+                            >
+                              Next
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        className=""
+                        style={
+                          this.state.currentTab === 1
+                            ? { display: "block" }
+                            : { display: "none" }
+                        }
+                      >
+                        <div className="inputCtr">
+                          <h4>Patient Address</h4>
+                          <div className="inputs_ctr">
+                            <div className="inpts_left">
+                              <TextField
+                                name="district"
+                                variant="outlined"
+                                label="District"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px",
+                                }}
+                              />
+                              <TextField
+                                name="sub_county"
+                                variant="outlined"
+                                label="Sub County"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px",
+                                }}
+                              />
+                              <TextField
+                                name="parish"
+                                variant="outlined"
+                                label="Parish"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px",
+                                }}
+                              />
+                            </div>
+                            <div className="inputs_center">
+                              <TextField
+                                name="village"
+                                variant="outlined"
+                                label="Village"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px",
+                                }}
+                              />
+                              <TextField
+                                name="tribe"
+                                variant="outlined"
+                                label="Tribe"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px",
+                                }}
+                              />
+                              <TextField
+                                name="address"
+                                variant="outlined"
+                                label="Address"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px",
+                                }}
+                              />
+                            </div>
+                            <div className="inpts_right">
+                              <TextField
+                                name="nk_surname"
+                                variant="outlined"
+                                label="Next Of Kin Surname"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px",
+                                }}
+                              />
+                              <TextField
+                                name="nk_first_name"
+                                variant="outlined"
+                                label="Next Of Kin Firstname"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px",
+                                }}
+                              />
+                              <TextField
+                                name="nk_relationship"
+                                variant="outlined"
+                                label="Relationship With Patient"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px",
+                                }}
+                              />
+                              <TextField
+                                name="nk_telephone"
+                                variant="outlined"
+                                label="Phone Number"
+                                style={{
+                                  width: "75%",
+                                  margin: "20px",
+                                }}
+                              />
+                            </div>
+                          </div>
+                          <div
+                            className=""
+                            style={{
+                              display: "flex",
+                              justifyContent: "flex-end",
+                            }}
+                          >
+                            <Button
+                              variant="contained"
+                              color="primary"
+                              style={{ marginRight: 10 }}
+                              onClick={this.handleSlideBack}
+                            >
+                              Back
+                            </Button>
+                            <Button
+                              variant="contained"
+                              color="primary"
+                              style={{ marginLeft: 10 }}
+                              onClick={this.handleSlideForward}
+                              disabled
+                            >
+                              Next
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </form>
@@ -144,230 +498,3 @@ const styles = {
     justifyContent: "space-around",
   },
 };
-
-function BioData() {
-  return (
-    <div className="inputCtr" style={styles.input_ctr}>
-      <h4>Patient Bio Data</h4>
-      <div className="inputs_ctr" style={styles.input_group}>
-        <div className="inpts_on_left">
-          <TextField
-            name="surname"
-            variant="outlined"
-            label="Surname"
-            style={{
-              width: "75%",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="first_name"
-            variant="outlined"
-            label="First Name"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="dob"
-            variant="outlined"
-            label="Date Of Birth"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="gender"
-            variant="outlined"
-            label="Gender"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-        </div>
-        <div className="inpts_center">
-          <TextField
-            name="phone_contact"
-            variant="outlined"
-            label="Phone Contact"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="email_address"
-            variant="outlined"
-            label="Email Address:(If Any)"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="pt_occupation"
-            variant="outlined"
-            label="Occupation"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="education_level"
-            variant="outlined"
-            label="Education Level"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-        </div>
-        <div className="inpts_on_right">
-          <TextField
-            name="marital_status"
-            variant="outlined"
-            label="Marital Status"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="religion"
-            variant="outlined"
-            label="Religion"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="tribe"
-            variant="outlined"
-            label="Tribe"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-function Address() {
-  return (
-    <div className="inputCtr" style={styles.input_ctr}>
-      <h4>Patient Address</h4>
-      <div className="inputs_ctr" style={styles.input_group}>
-        <div className="inpts_on_left">
-          <TextField
-            name="district"
-            variant="outlined"
-            label="District"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="sub_county"
-            variant="outlined"
-            label="Sub County"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="parish"
-            variant="outlined"
-            label="Parish"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="village"
-            variant="outlined"
-            label="Village"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-function NextOfKin() {
-  return (
-    <div className="inputCtr" style={styles.input_ctr}>
-      <h4>Next Of Kin</h4>
-      <div className="inputs_ctr" style={styles.input_group}>
-        <div className="inpts_on_left">
-          <TextField
-            name="nk_surname"
-            variant="outlined"
-            label="Next Of Kin Surname"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="nk_first_name"
-            variant="outlined"
-            label="Next Of Kin Firstname"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="nk_relationship"
-            variant="outlined"
-            label="Relationship With Parent"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="nk_address"
-            variant="outlined"
-            label="Address"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="nk_telephone"
-            variant="outlined"
-            label="Phone Number"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="nk_occupation"
-            variant="outlined"
-            label="Occupation"
-            style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-        </div>
-      </div>
-    </div>
-  );
-}

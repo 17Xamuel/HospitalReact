@@ -59,7 +59,7 @@ body {
 }
 .sidebar-brand {
   height: 90px;
-  padding: 1rem 0rem 1rem 2rem;
+  padding: 1rem 0rem 1rem 3rem;
   color: #fff;
 }
 .sidebar-brand span {
@@ -75,19 +75,19 @@ body {
   margin-bottom: 1.3rem;
   padding-left: 2rem;
 }
-.sidebar-menu a {
+.sidebar-menu ._a_replaced {
   display: block;
   color: #fff;
   font-size: 1.1rem;
 }
-.sidebar-menu a.active {
+.sidebar-menu ._a_replaced.active {
   background-color: #fff;
   padding-top: 1rem;
   padding-bottom: 1rem;
   color: var(--main-color);
   border-radius: 30px 0px 0px 30px;
 }
-.sidebar-menu a span:first-child {
+.sidebar-menu ._a_replaced span:first-child {
   font-size: 1.5rem;
   padding-right: 1rem;
   padding-left: 1rem;
@@ -102,14 +102,17 @@ body {
   width: 70px;
   margin: auto;
 }
-#nav-toggle:checked + li a {
+#nav-toggle:checked + li ._a_replaced {
   padding-left: 0rem;
 }
-#nav-toggle:checked + li a span {
+#nav-toggle:checked + li ._a_replaced span {
   padding-right: 1rem;
 }
+#nav-toggle:checked + .sideBar-ctr .sidebar-brand h2 {
+  margin-left: 0.1rem;
+}
 #nav-toggle:checked + .sideBar-ctr .sidebar-brand h2 span:last-child,
-#nav-toggle:checked + .sideBar-ctr .sidebar li a span:last-child {
+#nav-toggle:checked + .sideBar-ctr .sidebar li ._a_replaced span:last-child {
   display: none;
 }
 #nav-toggle:checked + .sideBar-ctr .sidebar .sidebar-brand {
@@ -308,69 +311,6 @@ td .status {
     grid-template-columns: 100%;
   }
 }
-/* @media only screen and (max-width: 768px) {
-  .sideBar-ctr {
-    left: -100% !important;
-  }
-  header h2 {
-    display: flex;
-    align-items: center;
-  }
-  header h2 label {
-    background: var(--main-color);
-    color: #fff;
-    padding: 0rem;
-    padding-top: 0.4rem;
-    margin-right: 1rem;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    text-align: center;
-  }
-  header h2 span {
-    padding-right: 0rem;
-  }
-  header {
-    width: 100% !important;
-    left: 0 !important;
-  }
-  #nav-toggle:checked + .sidebar {
-    left: 0 !important;
-    width: 250px;
-    z-index: 100;
-  }
-  #nav-toggle:checked + .sidebar .sidebar-brand,
-  #nav-toggle:checked + .sidebar li {
-    padding-left: 2rem;
-  }
-  #nav-toggle:checked + li a {
-    padding-left: 1rem;
-  }
-
-  #nav-toggle:checked + .sidebar .sidebar-brand h2 span:last-child,
-  #nav-toggle:checked + .sidebar li a span:last-child {
-    display: inline;
-  }
-  #nav-toggle:checked ~ .main-content {
-    margin-left: 0rem !important;
-  }
-  .main-content {
-    width: 100%;
-    margin-left: 0rem;
-  }
-
-  .cards {
-    grid-template-columns: 100%;
-  }
-  .recent-grid,
-  .fullwidth-ctr {
-    grid-template-columns: 100%;
-  }
-  .search-wrapper {
-    display: none;
-  }
-} */
-
 @media only screen and (max-width: 768px) {
   .health_unit_name {
     display: none;
@@ -412,7 +352,7 @@ td .status {
   #nav-toggle:not(:checked) + .sidebar li {
     padding-left: 2rem;
   }
-  #nav-toggle:not(:checked) + li a {
+  #nav-toggle:not(:checked) + li ._a_replaced {
     padding-left: 1rem;
   }
 

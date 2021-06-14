@@ -4,20 +4,11 @@ import UsersApi from "../api/users";
 import Image from "../assets/doctor.png";
 import Logo from "../assets/logo_hospital.png";
 import base64 from "base-64";
-import json from "./app.json";
-// import sha256 from "crypto-js/sha256";
-// import CryptoJS from "crypto-js";
-// import hmacSHA512 from "crypto-js/hmac-sha512";
-// import Base64 from "crypto-js/enc-base64";
-
 //design
 import "./login.css";
 
 function Login() {
   const [user, setUser] = useState({ username: "", password: "", _cp: true });
-  const data = base64.encode(json);
-  console.log(data);
-  console.log(base64.decode(data));
   const handleClick = async (e) => {
     const res = await UsersApi.login({
       username: user.username,
@@ -27,6 +18,10 @@ function Login() {
       setUser({ ...user, _cp: false });
       return;
     } else {
+      const data = base64.encode(res.user);
+      localStorage.setItem("key", data);
+      localStorage.setItem("user", "doctor");
+      window.location.replace("/");
     }
   };
   return (
@@ -36,6 +31,7 @@ function Login() {
     >
       <div className="ctr">
         <img
+          alt="Hospital"
           src={Logo}
           height="120px"
           width="150px"
@@ -99,7 +95,7 @@ function Login() {
           </Button>
         </div>
       </div>
-      <img src={Image} className="img" />
+      <img src={Image} className="img" alt="Hospital" />
     </div>
   );
 }

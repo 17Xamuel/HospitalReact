@@ -13,7 +13,10 @@ class Nav extends Component {
           <div className="sidebar">
             <div className="sidebar-brand">
               <h2>
-                <span className="lab la-accusoft"></span>
+                <span
+                  className="las la-clinic-medical"
+                  style={{ fontSize: "32px" }}
+                ></span>
                 <span>Hospital</span>
               </h2>
             </div>
@@ -21,39 +24,38 @@ class Nav extends Component {
               <ul>
                 <li>
                   <Link to="/">
-                    <a
-                      href
-                      className={
+                    <span
+                      className={`${
                         this.props.active === "dashboard" ? "active" : ""
-                      }
+                      } _a_replaced`}
                     >
-                      <span className="las la-igloo"></span>
+                      <span className="las la-home"></span>
                       <span>Dashboard</span>
-                    </a>
+                    </span>
                   </Link>
                 </li>
                 <li>
                   <Link to="/new">
-                    <a
-                      href
-                      className={this.props.active === "new" ? "active" : ""}
+                    <span
+                      className={`${
+                        this.props.active === "new" ? "active" : ""
+                      } _a_replaced`}
                     >
-                      <span className="las la-users"></span>
+                      <span className="las la-user-plus"></span>
                       <span>New Patient</span>
-                    </a>
+                    </span>
                   </Link>
                 </li>
                 <li>
                   <Link to="/screening">
-                    <a
-                      href
-                      className={
+                    <span
+                      className={`${
                         this.props.active === "screening" ? "active" : ""
-                      }
+                      } _a_replaced`}
                     >
-                      <span className="las la-users"></span>
+                      <span className="las la-user-edit"></span>
                       <span>Screening</span>
-                    </a>
+                    </span>
                   </Link>
                 </li>
               </ul>
