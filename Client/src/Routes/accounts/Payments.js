@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import FormsApi from "../../api/forms";
 
 import "../../design/main.css";
+import "../../design/forms.css";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -88,39 +89,31 @@ class Payments extends Component {
                   autoComplete="off"
                   onSubmit={this.handleSubmit}
                 >
-                  <div className="card-header">
-                    <h3>New Payment</h3>
+                  <div className="card-header card-header-payments">
+                    <h3 className="class_payment_header">New Payment</h3>
                     <div className="">
                       <Button
                         type="submit"
                         variant="contained"
                         color="primary"
-                        style={{ marginInline: 10 }}
+                        style={{ marginRight: 10 }}
                       >
                         <span
-                          style={{ fontSize: "17.5px", marginInline: "10px" }}
+                          style={{ fontSize: "17.5px", marginRight: "10px" }}
                         >
                           <i className="las la-print"></i>
                         </span>
                         Print Receipt
-                      </Button>
-                      <Button variant="contained" color="primary">
-                        See all
-                        <span
-                          style={{ fontSize: "17.5px", marginInline: "10px" }}
-                        >
-                          <span className="las la-arrow-right"></span>
-                        </span>
                       </Button>
                       <Button
                         type="submit"
                         aria-describedby={this.id}
                         variant="contained"
                         color="primary"
-                        style={{ marginInline: 10 }}
+                        style={{ marginLeft: 10 }}
                       >
                         <span
-                          style={{ fontSize: "17.5px", marginInline: "10px" }}
+                          style={{ fontSize: "17.5px", marginRight: "10px" }}
                         >
                           <i className="las la-save"></i>
                         </span>
@@ -139,7 +132,7 @@ class Payments extends Component {
                 <div className="card-header">
                   <h3>Payment Details</h3>
                   <Button variant="contained" color="primary">
-                    <span style={{ fontSize: "17.5px", marginInline: "10px" }}>
+                    <span style={{ fontSize: "17.5px", marginRight: "10px" }}>
                       <i className="las la-print"></i>
                     </span>
                     Print
@@ -202,36 +195,21 @@ class Payments extends Component {
 
 export default Payments;
 
-const styles = {
-  input_ctr: {
-    width: "50%",
-    margin: "auto",
-  },
-  input_group: {
-    width: "100%",
-    border: "1px solid rgba(0,0,0,0.1)",
-    borderRadius: "5px",
-    margin: "15px auto",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-around",
-    alignItems: "center",
-  },
-};
-
 function PaymentDetails() {
   return (
-    <div className="inputCtr" style={styles.input_ctr}>
+    <div className="inputCtrPaymentsDepart">
       <h4>Payment</h4>
-      <div className="inputs_ctr" style={styles.input_group}>
+      <div
+        className="inputs_ctr"
+        style={{ alignItems: "center", flexDirection: "column" }}
+      >
         <TextField
           name="patient_number"
           variant="outlined"
           label="Patient Number"
           style={{
-            width: "320px",
+            width: "75%",
             margin: "20px",
-            display: "block",
           }}
         />
         <TextField
@@ -239,9 +217,8 @@ function PaymentDetails() {
           variant="outlined"
           label="Patient Name"
           style={{
-            width: "320px",
+            width: "75%",
             margin: "20px",
-            display: "block",
           }}
         />
         <TextField
@@ -249,19 +226,17 @@ function PaymentDetails() {
           variant="outlined"
           label="Amount(Shs)"
           style={{
-            width: "320px",
+            width: "75%",
             margin: "20px",
-            display: "block",
           }}
         />
         <TextField
           name="balance"
           variant="outlined"
-          label="Balance"
+          label="Balance(Shs)"
           style={{
-            width: "320px",
+            width: "75%",
             margin: "20px",
-            display: "block",
           }}
         />
       </div>

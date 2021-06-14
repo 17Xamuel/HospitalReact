@@ -43,7 +43,7 @@ class Nav extends Component {
                           : ""
                       } _a_replaced`}
                     >
-                      <span className="las la-users"></span>
+                      <span className="las la-stethoscope"></span>
                       <span>Clinical Info.</span>
                     </span>
                   </Link>
@@ -55,7 +55,7 @@ class Nav extends Component {
                         this.props.active === "lab_request" ? "active" : ""
                       } _a_replaced`}
                     >
-                      <span className="las la-users"></span>
+                      <span className="las la-vials"></span>
                       <span>Lab Request</span>
                     </span>
                   </Link>
@@ -67,7 +67,7 @@ class Nav extends Component {
                         this.props.active === "diagnosis" ? "active" : ""
                       } _a_replaced`}
                     >
-                      <span className="las la-users"></span>
+                      <span className="las la-user-injured"></span>
                       <span>Diagnosis</span>
                     </span>
                   </Link>
@@ -79,7 +79,7 @@ class Nav extends Component {
                         this.props.active === "referral" ? "active" : ""
                       } _a_replaced`}
                     >
-                      <span className="las la-users"></span>
+                      <span className="las la-share"></span>
                       <span>Referrals</span>
                     </span>
                   </Link>
