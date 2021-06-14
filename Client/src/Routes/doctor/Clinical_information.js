@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import FormsApi from "../../api/forms";
 
 import "../../design/main.css";
+import "../../design/forms.css";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -91,19 +92,6 @@ class ClinicalInformationClass extends Component {
                   <div className="card-header">
                     <h3>Clinical And Sample Info.</h3>
                     <div className="">
-                      <Button
-                        type="submit"
-                        variant="contained"
-                        color="primary"
-                        style={{ marginRight: 10 }}
-                      >
-                        <span
-                          style={{ fontSize: "17.5px", marginRight: "10px" }}
-                        >
-                          <i className="las la-print"></i>
-                        </span>
-                        Print Receipt
-                      </Button>
                       <Button
                         type="submit"
                         aria-describedby={this.id}
@@ -213,51 +201,85 @@ const styles = {
 
 function ClinicalInformation() {
   return (
-    <div className="inputCtr" style={styles.input_ctr}>
-      <h4>Clinical info. Form</h4>
-      <div className="inputs_ctr" style={styles.input_group}>
-        <TextField
-          name="patient_number"
-          variant="outlined"
-          label="Patient Number"
-          style={{
-            width: "320px",
-            margin: "20px",
-            display: "block",
-          }}
-        />
-        <TextField
-          name="patient_name"
-          variant="outlined"
-          label="Patient Name"
-          aria-readonly
-          style={{
-            width: "320px",
-            margin: "20px",
-            display: "block",
-          }}
-        />
-        <TextField
-          name="clinical_notes"
-          variant="outlined"
-          label="Clinical Notes"
-          multiline
-          style={{
-            width: "320px",
-            margin: "20px",
-            display: "block",
-          }}
-        />
-        <TextField
-          name="therapy"
-          variant="outlined"
-          label="Therapy"
-          style={{
-            width: "320px",
-            margin: "20px",
-            display: "block",
-          }}
-        />
+    <div className="inputCtrPaymentsDepart" style={{ width: "75%" }}>
+      <h4>Clinical Info. Form</h4>
+      <div className="inputs_ctr" style={{ alignItems: "center" }}>
+        <div className="inpts_on_left">
+          <TextField
+            name="patient_number"
+            variant="outlined"
+            label="Patient Number"
+            style={{
+              width: "75%",
+              margin: "20px",
+            }}
+          />
+          <TextField
+            name="patient_name"
+            variant="outlined"
+            label="Patient Name"
+            style={{
+              width: "75%",
+              margin: "20px",
+            }}
+          />
+          <TextField
+            name="amount"
+            variant="outlined"
+            label="Amount(Shs)"
+            style={{
+              width: "75%",
+              margin: "20px",
+            }}
+          />
+          <TextField
+            name="balance"
+            variant="outlined"
+            label="Balance(Shs)"
+            style={{
+              width: "75%",
+              margin: "20px",
+            }}
+          />
+        </div>
+        <div className="inpts_center">
+          <TextField
+            name="patient_number"
+            variant="outlined"
+            label="Patient Number"
+            style={{
+              width: "75%",
+              margin: "20px",
+            }}
+          />
+          <TextField
+            name="patient_name"
+            variant="outlined"
+            label="Patient Name"
+            style={{
+              width: "75%",
+              margin: "20px",
+            }}
+          />
+          <TextField
+            name="amount"
+            variant="outlined"
+            label="Amount(Shs)"
+            style={{
+              width: "75%",
+              margin: "20px",
+            }}
+          />
+          <TextField
+            name="balance"
+            variant="outlined"
+            label="Balance(Shs)"
+            style={{
+              width: "75%",
+              margin: "20px",
+            }}
+          />
+        </div>
       </div>
     </div>
   );

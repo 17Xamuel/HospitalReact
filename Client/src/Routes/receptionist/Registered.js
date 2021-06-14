@@ -102,27 +102,36 @@ class Screening extends Component {
                   autoComplete="off"
                   onSubmit={this.handleSubmit}
                 >
-                  <div className="card-header">
-                    <h3>Patient Screening</h3>
-                    <div className="">
-                      <Button
-                        type="submit"
-                        aria-describedby={this.id}
-                        variant="contained"
-                        color="primary"
-                        style={{ marginRight: 10 }}
-                      >
-                        Cancel
-                      </Button>
-                      <Button
-                        type="submit"
-                        aria-describedby={this.id}
-                        variant="contained"
-                        color="primary"
-                        style={{ marginLeft: 10 }}
-                      >
-                        Save
-                      </Button>
+                  <div
+                    className=""
+                    style={{
+                      borderBottom: "1px solid #f0f0f0",
+                      padding: "1rem",
+                    }}
+                  >
+                    <div className="form-header-ctr">
+                      <div className="">
+                        <h3>Triage</h3>
+                      </div>
+
+                      <div className="">
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          style={{ marginRight: 10 }}
+                        >
+                          Cancel
+                        </Button>
+                        <Button
+                          type="submit"
+                          aria-describedby={this.id}
+                          variant="contained"
+                          color="primary"
+                          style={{ marginLeft: 10 }}
+                        >
+                          Save
+                        </Button>
+                      </div>
                     </div>
                   </div>
                   <div className="card-body">
@@ -168,6 +177,7 @@ const useStyles = makeStyles((theme) => ({
   chips: {
     display: "flex",
     flexWrap: "wrap",
+    alignItems: "center",
   },
   chip: {
     margin: 10,
@@ -227,7 +237,6 @@ function BioData() {
   };
   return (
     <div className="inputCtr" style={styles.input_ctr}>
-      <h4>Patient Screening Data</h4>
       <TextField
         name="patient_number"
         variant="outlined"
@@ -238,7 +247,7 @@ function BioData() {
         }}
       />
       <div className="inputs_ctr" style={styles.input_group}>
-        <div className="inpts_on_left">
+        <div className="inpts_on_left" style={{ flex: 1 }}>
           <TextField
             name="muac"
             variant="outlined"
@@ -253,7 +262,7 @@ function BioData() {
             variant="outlined"
             label="Weight(KG)"
             style={{
-              width: "240px",
+              width: "75%",
               margin: "20px",
             }}
           />
@@ -262,7 +271,7 @@ function BioData() {
             variant="outlined"
             label="Height"
             style={{
-              width: "240px",
+              width: "75%",
               margin: "20px",
             }}
           />
@@ -271,18 +280,18 @@ function BioData() {
             variant="outlined"
             label="BMI"
             style={{
-              width: "240px",
+              width: "75%",
               margin: "20px",
             }}
           />
         </div>
-        <div className="inpts_center">
+        <div className="inpts_center" style={{ flex: 1 }}>
           <TextField
             name="blood_pressure"
             variant="outlined"
             label="Blood Pressure"
             style={{
-              width: "240px",
+              width: "75%",
               margin: "20px",
             }}
           />
@@ -291,7 +300,7 @@ function BioData() {
             variant="outlined"
             label="Blood Sugar"
             style={{
-              width: "240px",
+              width: "75%",
               margin: "20px",
             }}
           />
@@ -300,27 +309,18 @@ function BioData() {
             variant="outlined"
             label="Palliative Care"
             style={{
-              width: "240px",
+              width: "75%",
               margin: "20px",
             }}
           />
         </div>
-        <div className="inpts_on_right">
+        <div className="inpts_on_right" style={{ flex: 1 }}>
           <TextField
             name="patient_classification"
             variant="outlined"
             label="Patient Classification"
             style={{
-              width: "240px",
-              margin: "20px",
-            }}
-          />
-          <TextField
-            name="tobacco_use"
-            variant="outlined"
-            label="Tobacco Use"
-            style={{
-              width: "240px",
+              width: "75%",
               margin: "20px",
             }}
           />
@@ -362,155 +362,6 @@ function BioData() {
               ))}
             </Select>
           </FormControl>
-          <div className="inputCtr" style={styles.input_ctr}>
-            {/* <h4>Patient Screening Data</h4>
-            <TextField
-              name="patient_number"
-              variant="outlined"
-              label="Patient Number"
-              style={{
-                width: "200px",
-                margin: "20px 0px",
-              }}
-            /> */}
-            {/* <div className="inputs_ctr" style={styles.input_group}>
-              <div className="inpts_on_left">
-                <TextField
-                  name="muac"
-                  variant="outlined"
-                  label="Muac"
-                  style={{
-                    width: "75%",
-                    margin: "20px",
-                  }}
-                />
-                <TextField
-                  name="weight"
-                  variant="outlined"
-                  label="Weight(KG)"
-                  style={{
-                    width: "240px",
-                    margin: "20px",
-                  }}
-                />
-                <TextField
-                  name="height"
-                  variant="outlined"
-                  label="Height"
-                  style={{
-                    width: "240px",
-                    margin: "20px",
-                  }}
-                />
-                <TextField
-                  name="bmi"
-                  variant="outlined"
-                  label="BMI"
-                  style={{
-                    width: "240px",
-                    margin: "20px",
-                  }}
-                />
-              </div>
-              <div className="inpts_center">
-                <TextField
-                  name="z_score_weight"
-                  variant="outlined"
-                  label="Z Score Weight"
-                  style={{
-                    width: "240px",
-                    margin: "20px",
-                  }}
-                />
-                <TextField
-                  name="z_score_height"
-                  variant="outlined"
-                  label="Z Score height"
-                  style={{
-                    width: "240px",
-                    margin: "20px",
-                  }}
-                />
-                <TextField
-                  name="blood_pressure"
-                  variant="outlined"
-                  label="Blood Pressure"
-                  style={{
-                    width: "240px",
-                    margin: "20px",
-                  }}
-                />
-                <TextField
-                  name="blood_sugar"
-                  variant="outlined"
-                  label="Blood Sugar"
-                  style={{
-                    width: "240px",
-                    margin: "20px",
-                  }}
-                />
-              </div>
-              <div className="inpts_on_right">
-                <TextField
-                  name="palliative_care"
-                  variant="outlined"
-                  label="Palliative Care"
-                  style={{
-                    width: "240px",
-                    margin: "20px",
-                  }}
-                />
-                <TextField
-                  name="patient_classification"
-                  variant="outlined"
-                  label="Patient Classification"
-                  style={{
-                    width: "240px",
-                    margin: "20px",
-                  }}
-                />
-                <TextField
-                  name="tobacco_use"
-                  variant="outlined"
-                  label="Tobacco Use"
-                  style={{
-                    width: "240px",
-                    margin: "20px",
-                  }}
-                />
-                <FormControl>
-                  <InputLabel id="demo-mutiple-chip-label">Chip</InputLabel>
-                  <Select
-                    labelId="demo-mutiple-chip-label"
-                    id="demo-mutiple-chip"
-                    multiple
-                    value={personName}
-                    onChange={handleChange}
-                    input={<Input id="select-multiple-chip" />}
-                    renderValue={(selected) => (
-                      <div>
-                        {selected.map((value) => (
-                          <Chip key={value} label={value} />
-                        ))}
-                      </div>
-                    )}
-                    MenuProps={MenuProps}
-                  >
-                    {names.map((name) => (
-                      <MenuItem
-                        key={name}
-                        value={name}
-                        style={getStyles(name, personName, theme)}
-                      >
-                        {name}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-              </div>
-            </div>
-          </div> */}
-          </div>
         </div>
       </div>
     </div>

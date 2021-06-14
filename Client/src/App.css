@@ -307,7 +307,8 @@ td .status {
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }
-  .fullwidth-ctr {
+  .fullwidth-ctr,
+  .recent-grid-left {
     grid-template-columns: 100%;
   }
 }
@@ -334,7 +335,8 @@ td .status {
     grid-template-columns: 100%;
   }
   .recent-grid,
-  .fullwidth-ctr {
+  .fullwidth-ctr,
+  .recent-grid-left {
     grid-template-columns: 100%;
   }
   .search-wrapper {

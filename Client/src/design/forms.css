@@ -1,6 +1,6 @@
 .form-header-ctr {
   width: 75%;
-  margin: auto;
+  margin: 10px auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,6 +8,10 @@
 
 .inputCtr {
   width: 75%;
+  margin: auto;
+}
+.inputCtrPaymentsDepart {
+  width: 55%;
   margin: auto;
 }
 .inputs_ctr {
@@ -18,10 +22,18 @@
   display: flex;
   justify-content: space-around;
 }
+.inpts_center {
+  flex: 1;
+}
+.inpts_on_left {
+  flex: 1;
+}
+.inpts_on_right {
+  flex: 1;
+}
 @media screen and (max-width: 1024px) {
   .form-header-ctr {
     width: 100%;
-
     align-items: center;
   }
 
@@ -31,5 +43,24 @@
   }
   .inputs_ctr {
     flex-direction: column;
+  }
+  /*Payments Responsive*/
+  .card-header-payments {
+    justify-content: flex-end;
+  }
+  .class_payment_header {
+    display: none;
+  }
+  .inputCtrPaymentsDepart {
+    width: 75%;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  /* payments responsive */
+  .inputCtrPaymentsDepart {
+    width: 100%;
+    margin: auto;
   }
 }
