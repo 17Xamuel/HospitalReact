@@ -1,13 +1,55 @@
 import React, { Component } from "react";
-import { Button } from "@material-ui/core";
+import { Button, Menu, MenuItem } from "@material-ui/core";
 import Nav from "./components/Nav";
 import Header from "./components/Header";
+import UsersApi from "../../api/users";
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      AnchorEl: null,
+      _pnumber: "...",
+      _pnumber_month: "...",
+      _doctors: "...",
+      _pending_consultions: "...",
+    };
+    this.patients();
+    this.patients_this_month();
+    this.doctors_today();
+    this.pending_consultions();
   }
+  //cards Requests
+  async patients() {
+    const res = (await UsersApi.data("/user/all/patients")) || [];
+    if (res) {
+      this.setState({ ...this.state, _pnumber: res.length });
+    }
+  }
+  async patients_this_month() {
+    const res = (await UsersApi.data("/user/all/patients_this_month")) || [];
+    if (res) {
+      this.setState({ ...this.state, _pnumber_month: res.length });
+    }
+  }
+  async doctors_today() {
+    const res = (await UsersApi.data("/user/all/doctors_today")) || [];
+    if (res) {
+      this.setState({ ...this.state, _doctors: res.length });
+    }
+  }
+  async pending_consultions() {
+    const res = (await UsersApi.data("/user/all/pending_consultions")) || [];
+    if (res) {
+      this.setState({ ...this.state, _pending_consultions: res.length });
+    }
+  }
+  handleOpenActions = (e) => {
+    this.setState({ ...this.state, AnchorEl: e.currentTarget });
+  };
+  handleCloseActions = () => {
+    this.setState({ ...this.state, AnchorEl: null });
+  };
   render() {
     return (
       <>
@@ -19,8 +61,11 @@ class Dashboard extends Component {
             <div className="cards">
               <div className="card-single">
                 <div className="">
-                  <h1>54</h1>
-                  <span>Patients</span>
+                  <h1>{this.state._pnumber_month}</h1>
+                  <span>
+                    Patients Registered <br />
+                    <span style={{ fontSize: "13px" }}>This Month</span>
+                  </span>
                 </div>
                 <div className="">
                   <span className="las la-users"> </span>
@@ -28,8 +73,17 @@ class Dashboard extends Component {
               </div>
               <div className="card-single">
                 <div className="">
-                  <h1>54</h1>
-                  <span>Patients</span>
+                  <h1>{this.state._pending_consultions}</h1>
+                  <span>Pending Consultations</span>
+                </div>
+                <div className="">
+                  <span className="las la-users"></span>
+                </div>
+              </div>
+              <div className="card-single">
+                <div className="">
+                  <h1>{this.state._doctors}</h1>
+                  <span>Doctors Available</span>
                 </div>
                 <div className="">
                   <span className="las la-users"> </span>
@@ -37,17 +91,8 @@ class Dashboard extends Component {
               </div>
               <div className="card-single">
                 <div className="">
-                  <h1>54</h1>
-                  <span>Patients</span>
-                </div>
-                <div className="">
-                  <span className="las la-users"> </span>
-                </div>
-              </div>
-              <div className="card-single">
-                <div className="">
-                  <h1>54</h1>
-                  <span>Patients</span>
+                  <h1>{this.state._pnumber}</h1>
+                  <span>Total Patients</span>
                 </div>
                 <div className="">
                   <span className="las la-users"> </span>
@@ -61,9 +106,7 @@ class Dashboard extends Component {
                     <h3>Recent Patients</h3>
                     <Button variant="contained" color="primary">
                       See all
-                      <span
-                        style={{ fontSize: "17.5px", marginInline: "10px" }}
-                      >
+                      <span style={{ fontSize: "17.5px", marginLeft: "10px" }}>
                         <span className="las la-arrow-right"></span>
                       </span>
                     </Button>
@@ -107,15 +150,38 @@ class Dashboard extends Component {
               <div className="projects">
                 <div className="card">
                   <div className="card-header">
-                    <h3>Recent Patients</h3>
-                    <Button variant="contained" color="primary">
-                      See all
+                    <h3>Actions</h3>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      aria-controls="reception-actions"
+                      aria-haspopup="true"
+                      onClick={this.handleOpenActions}
+                    >
+                      Show
                       <span
                         style={{ fontSize: "17.5px", marginInline: "10px" }}
                       >
-                        <span className="las la-arrow-right"></span>
+                        <span className="las la-angle-down"></span>
                       </span>
                     </Button>
+                    <Menu
+                      id="reception-actions"
+                      anchorEl={this.state.AnchorEl}
+                      keepMounted
+                      open={Boolean(this.state.AnchorEl)}
+                      onClose={this.handleCloseActions}
+                    >
+                      <MenuItem onClick={this.handleCloseActions}>
+                        Profile
+                      </MenuItem>
+                      <MenuItem onClick={this.handleCloseActions}>
+                        My account
+                      </MenuItem>
+                      <MenuItem onClick={this.handleCloseActions}>
+                        Logout
+                      </MenuItem>
+                    </Menu>
                   </div>
                   <div className="card-body">
                     <table width="100%">
