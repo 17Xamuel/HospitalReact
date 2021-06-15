@@ -3,6 +3,7 @@ import { Button, Menu, MenuItem } from "@material-ui/core";
 import Nav from "./components/Nav";
 import Header from "./components/Header";
 import UsersApi from "../../api/users";
+import { Link } from "react-router-dom";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -172,15 +173,16 @@ class Dashboard extends Component {
                       open={Boolean(this.state.AnchorEl)}
                       onClose={this.handleCloseActions}
                     >
-                      <MenuItem onClick={this.handleCloseActions}>
-                        Profile
-                      </MenuItem>
-                      <MenuItem onClick={this.handleCloseActions}>
-                        My account
-                      </MenuItem>
-                      <MenuItem onClick={this.handleCloseActions}>
-                        Logout
-                      </MenuItem>
+                      <Link to="/new">
+                        <MenuItem onClick={this.handleCloseActions}>
+                          New Patient
+                        </MenuItem>
+                      </Link>
+                      <Link to="/screening">
+                        <MenuItem onClick={this.handleCloseActions}>
+                          Triage
+                        </MenuItem>
+                      </Link>
                     </Menu>
                   </div>
                   <div className="card-body">
