@@ -138,7 +138,7 @@ export default class FormsApi {
   //   }
   // }
 
-  static async Posting(data, i) {
+  static async post(data, i) {
     try {
       const res = await axios.post(`${url}${i}`, data);
       return res.data;
