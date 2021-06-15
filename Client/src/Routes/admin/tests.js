@@ -27,13 +27,19 @@ class Tests extends Component {
     fd.forEach((value, key) => {
       form_content[key] = value;
     });
-
-    let res = await FormsApi.post("/user/admin/new_test", form_content);
+    let api = new FormsApi();
+    let res = await api.post("/user/admin/new_test", form_content);
     if (res.status === true) {
       this.setState({
         ...this.state,
         message: res.data,
         messageState: "success",
+      });
+    } else {
+      this.setState({
+        ...this.state,
+        messageState: "error",
+        message: res.data,
       });
     }
   };

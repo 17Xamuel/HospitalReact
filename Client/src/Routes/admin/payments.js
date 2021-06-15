@@ -144,14 +144,14 @@ class Payments extends Component {
               <div class="projects">
                 <div className="card">
                   <div className="card-header">
-                    <h3>Last Payment</h3>
+                    <h3>Payments Available</h3>
                     <Button variant="contained" color="primary">
                       <span
                         style={{ fontSize: "17.5px", marginInline: "10px" }}
                       >
-                        <i className="las la-print"></i>
+                        <i className="las la-plus"></i>
                       </span>
-                      Print
+                      Add
                     </Button>
                   </div>
                   <div className="card-body">
@@ -190,39 +190,48 @@ function Payment() {
   return (
     <>
       <div className="inputCtr" style={styles.input_ctr}>
-        <h4>Patient Number : 1209ZS2</h4>
         <div className="inputs_ctr" style={styles.input_group}>
           <table width="100%">
+            <thead>
+              <td>Payment</td>
+              <td>Amount(Shs)</td>
+              <td>Action</td>
+            </thead>
             <tbody>
               <tr>
+                <td>Consultation</td>
+                <td>20000</td>
                 <td>
-                  <span style={{ fontWeight: "bolder" }}>Firstname :</span>
-                  Denis
-                </td>
-                <td>
-                  <span style={{ fontWeight: "bolder" }}>Othername :</span>
-                  Mulindwa
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span style={{ fontWeight: "bolder" }}>Amount :</span>UGX
-                  23000
-                </td>
-                <td>
-                  <span style={{ fontWeight: "bolder" }}>Balance :</span>UGX
-                  5000
+                  <IconButton>
+                    <i
+                      className="las la-edit"
+                      style={{ color: "dodgerblue" }}
+                    ></i>
+                  </IconButton>
                 </td>
               </tr>
               <tr>
+                <td>CBC Test</td>
+                <td>20000</td>
                 <td>
-                  <span style={{ fontWeight: "bolder" }}>Payment For :</span>
+                  <IconButton>
+                    <i
+                      className="las la-edit"
+                      style={{ color: "dodgerblue" }}
+                    ></i>
+                  </IconButton>
                 </td>
               </tr>
               <tr>
+                <td>AIDS Test</td>
+                <td>20000</td>
                 <td>
-                  CBC Test <br />
-                  Consultation
+                  <IconButton>
+                    <i
+                      className="las la-edit"
+                      style={{ color: "dodgerblue" }}
+                    ></i>
+                  </IconButton>
                 </td>
               </tr>
             </tbody>

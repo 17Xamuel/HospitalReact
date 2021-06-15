@@ -30,7 +30,7 @@ router.post("/new_test", async (req, res) => {
         res.send({ status: false });
       } else {
         results.length > 0
-          ? res.send({ data: "Department Exists..." })
+          ? res.send({ data: "Test Exists", status: false })
           : conn.query(
               `INSERT INTO tests_tbl SET ?`,
               {
@@ -42,7 +42,7 @@ router.post("/new_test", async (req, res) => {
               (err, result) => {
                 if (err) {
                   console.log(err);
-                  res.send({ status: false });
+                  res.send({ status: false, data: "Error Occured. Try Again" });
                 } else {
                   res.send({ data: "Test Added Successfully", status: true });
                 }
@@ -64,7 +64,7 @@ router.post("/new_department", async (req, res) => {
         res.send({ data: "An Error Occured", status: false });
       } else {
         res1.length > 0
-          ? res.send({ data: "Department Exists" })
+          ? res.send({ data: "Department Exists", status: false })
           : conn.query(
               `INSERT INTO department_tbl SET ?`,
               {
@@ -74,7 +74,7 @@ router.post("/new_department", async (req, res) => {
               (err2, res2) => {
                 if (err2) {
                   console.log(err2);
-                  res.send({ status: false });
+                  res.send({ data: "Error Occured", status: false });
                 } else {
                   res.send({ data: "Department Already Exists", status: true });
                 }
