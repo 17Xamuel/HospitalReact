@@ -3,7 +3,7 @@ import { TextField, Button } from "@material-ui/core";
 import UsersApi from "../api/users";
 import Image from "../assets/doctor.png";
 import Logo from "../assets/logo_hospital.png";
-import base64 from "base-64";
+import { Base64 } from "js-base64";
 //design
 import "./login.css";
 
@@ -18,9 +18,8 @@ function Login() {
       setUser({ ...user, _cp: false });
       return;
     } else {
-      const data = base64.encode(res.user);
-      localStorage.setItem("key", data);
-      localStorage.setItem("user", "doctor");
+      const data = Base64.encode(JSON.stringify(res.user));
+      localStorage.setItem("token", data);
       window.location.replace("/");
     }
   };

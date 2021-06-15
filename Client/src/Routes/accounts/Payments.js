@@ -31,7 +31,7 @@ class Payments extends Component {
       _fcontent[key] = value;
     });
     const api = new FormsApi();
-    let res = await api.postNewPayment(_fcontent);
+    let res = await api.post("/user/accounts/new_payment", _fcontent);
     console.log(res);
     if (res.status === true) {
       this.setState({

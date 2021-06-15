@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import user_logged_in from "./app_config";
+import user from "./app_config";
 import Receptionist from "./users_routes/reception";
 import Accounts from "./users_routes/accounts";
 import Doctor from "./users_routes/doctor";
@@ -11,19 +11,20 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: user_logged_in.user,
+      user,
     };
   }
+
   render() {
-    if (user_logged_in.user === "receptionist") {
+    if (user.user.user_role === "receptionist") {
       return <Receptionist />;
-    } else if (user_logged_in.user === "accounts") {
+    } else if (user.user.user_role === "accounts") {
       return <Accounts />;
-    } else if (user_logged_in.user === "doctor") {
+    } else if (user.user.user_role === "doctor") {
       return <Doctor />;
-    } else if (user_logged_in.user === "lab") {
+    } else if (user.user.user_role === "lab") {
       return <Lab />;
-    } else if (user_logged_in.user === "admin") {
+    } else if (user.user.user_role === "admin") {
       return <Admin />;
     } else {
       return <Login />;

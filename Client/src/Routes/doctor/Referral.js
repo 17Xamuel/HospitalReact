@@ -30,7 +30,7 @@ class Referral extends Component {
       _fcontent[key] = value;
     });
     const api = new FormsApi();
-    let res = await api.newReferral(_fcontent);
+    let res = await api.post("/user/doctor/new_referral", _fcontent);
     console.log(res);
     if (res.status === true) {
       this.setState({

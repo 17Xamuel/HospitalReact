@@ -30,7 +30,7 @@ class SampleCollection extends Component {
       _fcontent[key] = value;
     });
     const api = new FormsApi();
-    let res = await api.newSampleCollection(_fcontent);
+    let res = await api.post("/user/lab/new_lab_report", _fcontent);
     console.log(res);
     if (res.status === true) {
       this.setState({

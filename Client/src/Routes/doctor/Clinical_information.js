@@ -31,8 +31,7 @@ class ClinicalInformationClass extends Component {
       _fcontent[key] = value;
     });
     const api = new FormsApi();
-    let res = await api.postClinicalInfo(_fcontent);
-    console.log(res);
+    let res = await api.post("/user/doctor/new_clinical_info", _fcontent);
     if (res.status === true) {
       this.setState({
         ...this.state,
