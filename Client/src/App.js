@@ -4,6 +4,7 @@ import Receptionist from "./users_routes/reception";
 import Accounts from "./users_routes/accounts";
 import Doctor from "./users_routes/doctor";
 import Lab from "./users_routes/lab";
+import Admin from "./users_routes/admin";
 import Login from "./components/Login";
 
 class App extends Component {
@@ -23,6 +24,8 @@ class App extends Component {
       return <Doctor />;
     } else if (user.user.user_role === "lab") {
       return <Lab />;
+    } else if (user_logged_in.user === "admin") {
+      return <Admin />;
     } else {
       return <Login />;
     }

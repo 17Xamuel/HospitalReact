@@ -5,13 +5,11 @@ import Nav from "./components/Nav";
 import Header from "./components/Header";
 import FormsApi from "../../api/forms";
 
-import "../../design/main.css";
-
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-class SampleCollection extends Component {
+class Tests extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,17 +23,16 @@ class SampleCollection extends Component {
     e.preventDefault();
     this.setState({ ...this.state, open: true, messageState: "info" });
     const fd = new FormData(e.target);
-    let _fcontent = {};
+    let form_content = {};
     fd.forEach((value, key) => {
-      _fcontent[key] = value;
+      form_content[key] = value;
     });
     const api = new FormsApi();
-    let res = await api.newSampleCollection(_fcontent);
-    console.log(res);
+    let res = await api.postNewTest(form_content);
     if (res.status === true) {
       this.setState({
         ...this.state,
-        message: "Sample Collections Addded...",
+        message: "Test Added Successfully....",
         messageState: "success",
       });
     }
@@ -77,7 +74,7 @@ class SampleCollection extends Component {
           </Alert>
         </Snackbar>
         <input type="checkbox" id="nav-toggle" defaultChecked />
-        <Nav active="samples" />
+        <Nav active="tests" />
         <div className="main-content">
           <Header />
           <main>
@@ -89,30 +86,31 @@ class SampleCollection extends Component {
                   onSubmit={this.handleSubmit}
                 >
                   <div className="card-header">
-                    <h3>Lab Sample Collection &amp; Recieving</h3>
+                    <h3>New Test</h3>
                     <div className="">
                       <Button
                         type="submit"
                         variant="contained"
                         color="primary"
-                        style={{ marginRight: 10 }}
+                        style={{ marginInline: 10 }}
                       >
                         <span
-                          style={{ fontSize: "17.5px", marginRight: "10px" }}
+                          style={{ fontSize: "17.5px", marginInline: "10px" }}
                         >
                           <i className="las la-print"></i>
                         </span>
-                        Print Request
+                        Cancel
                       </Button>
+
                       <Button
                         type="submit"
                         aria-describedby={this.id}
                         variant="contained"
                         color="primary"
-                        style={{ marginLeft: "10px" }}
+                        style={{ marginInline: 10 }}
                       >
                         <span
-                          style={{ fontSize: "17.5px", marginRight: "10px" }}
+                          style={{ fontSize: "17.5px", marginInline: "10px" }}
                         >
                           <i className="las la-save"></i>
                         </span>
@@ -122,16 +120,16 @@ class SampleCollection extends Component {
                   </div>
                   <div className="card-body">
                     <div>
-                      <SampleCollectionDetails />
+                      <TestDetails />
                     </div>
                   </div>
                 </form>
               </div>
               <div className="card">
                 <div className="card-header">
-                  <h3>Sample Collection Details</h3>
+                  <h3>Test Details</h3>
                   <Button variant="contained" color="primary">
-                    <span style={{ fontSize: "17.5px", marginRight: "10px" }}>
+                    <span style={{ fontSize: "17.5px", marginInline: "10px" }}>
                       <i className="las la-print"></i>
                     </span>
                     Print
@@ -141,10 +139,10 @@ class SampleCollection extends Component {
                   <table width="100%">
                     <thead>
                       <tr>
-                        <td>Details</td>
+                        <td>Name</td>
                         <td>Qty</td>
-                        <td>Unit(Shs)</td>
-                        <td>Total(Shs)</td>
+                        <td>Amount(Shs)</td>
+                        <td>Actions</td>
                       </tr>
                     </thead>
                     <tbody>
@@ -152,35 +150,47 @@ class SampleCollection extends Component {
                         <td>CBC Test</td>
                         <td>1</td>
                         <td>3000</td>
+                        <td>
+                          <div style={{ color: "dodgerblue" }}>
+                            <i className="las la-edit"></i>
+                            <i className="las la-trash"></i>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>AIDS Test</td>
+                        <td>5</td>
                         <td>3000</td>
+                        <td>
+                          <div style={{ color: "dodgerblue" }}>
+                            <i className="las la-edit"></i>
+                            <i className="las la-trash"></i>
+                          </div>
+                        </td>
                       </tr>
                       <tr>
                         <td>CBC Test</td>
-                        <td>1</td>
+                        <td>4</td>
                         <td>3000</td>
-                        <td>3000</td>
+                        <td>
+                          <div style={{ color: "dodgerblue" }}>
+                            <i className="las la-edit"></i>
+                            <i className="las la-trash"></i>
+                          </div>
+                        </td>
                       </tr>
                       <tr>
                         <td>CBC Test</td>
-                        <td>1</td>
+                        <td>3</td>
                         <td>3000</td>
-                        <td>3000</td>
-                      </tr>
-                      <tr>
-                        <td>CBC Test</td>
-                        <td>1</td>
-                        <td>3000</td>
-                        <td>3000</td>
+                        <td>
+                          <div style={{ color: "dodgerblue" }}>
+                            <i className="las la-edit"></i>
+                            <i className="las la-trash"></i>
+                          </div>
+                        </td>
                       </tr>
                     </tbody>
-                    <thead>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td>Total</td>
-                        <td>12000</td>
-                      </tr>
-                    </thead>
                   </table>
                 </div>
               </div>
@@ -192,7 +202,7 @@ class SampleCollection extends Component {
   }
 }
 
-export default SampleCollection;
+export default Tests;
 
 const styles = {
   input_ctr: {
@@ -211,15 +221,15 @@ const styles = {
   },
 };
 
-function SampleCollectionDetails() {
+function TestDetails() {
   return (
     <div className="inputCtr" style={styles.input_ctr}>
-      <h4>Sample Collection</h4>
+      <h4>Add Test</h4>
       <div className="inputs_ctr" style={styles.input_group}>
         <TextField
-          name="patient_number"
+          name="test_name"
           variant="outlined"
-          label="Patient Number"
+          label="Test Name"
           style={{
             width: "320px",
             margin: "20px",
@@ -227,9 +237,9 @@ function SampleCollectionDetails() {
           }}
         />
         <TextField
-          name="patient_name"
+          name="test_description"
           variant="outlined"
-          label="Patient Name"
+          label="Test Description"
           style={{
             width: "320px",
             margin: "20px",
@@ -237,10 +247,9 @@ function SampleCollectionDetails() {
           }}
         />
         <TextField
-          name="specimens"
+          name="qty"
           variant="outlined"
-          multiline
-          label="Specimens Taken"
+          label="Quantity"
           style={{
             width: "320px",
             margin: "20px",
@@ -248,10 +257,9 @@ function SampleCollectionDetails() {
           }}
         />
         <TextField
-          name="reason"
+          name="amount"
           variant="outlined"
-          label="Reason"
-          multiline
+          label="Amount(Shs)"
           style={{
             width: "320px",
             margin: "20px",
