@@ -138,9 +138,10 @@ export default class FormsApi {
   //   }
   // }
 
-  static async post(data, i) {
+  async post(i, data) {
     try {
       const res = await axios.post(`${url}${i}`, data);
+      console.log(res);
       return res.data;
     } catch (error) {
       console.log(error);

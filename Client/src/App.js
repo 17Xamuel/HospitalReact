@@ -24,7 +24,7 @@ class App extends Component {
       return <Doctor />;
     } else if (user.user.user_role === "lab") {
       return <Lab />;
-    } else if (user_logged_in.user === "admin") {
+    } else if (user.user.user_role === "admin") {
       return <Admin />;
     } else {
       return <Login />;

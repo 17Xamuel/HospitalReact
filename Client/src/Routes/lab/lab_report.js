@@ -30,7 +30,7 @@ class LabReport extends Component {
       _fcontent[key] = value;
     });
     const api = new FormsApi();
-    let res = await api.newLabReport(_fcontent);
+    let res = await api.post("/user/lab/new_lab_report", _fcontent);
     if (res.status === true) {
       this.setState({
         ...this.state,
