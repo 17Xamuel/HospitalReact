@@ -27,12 +27,12 @@ class Tests extends Component {
     fd.forEach((value, key) => {
       form_content[key] = value;
     });
-    const api = new FormsApi();
-    let res = await api.postNewTest(form_content);
+
+    let res = await FormsApi.post("/user/admin/new_test", form_content);
     if (res.status === true) {
       this.setState({
         ...this.state,
-        message: "Test Added Successfully....",
+        message: res.data,
         messageState: "success",
       });
     }

@@ -61,7 +61,7 @@ router.post("/new_department", async (req, res) => {
     (err1, res1) => {
       if (err1) {
         console.log(err1);
-        res.send({ status: false });
+        res.send({ data: "An Error Occured", status: false });
       } else {
         res1.length > 0
           ? res.send({ data: "Department Exists" })
@@ -104,41 +104,43 @@ router.post("/new_user", async (req, res) => {
     (err1, res1) => {
       if (err1) {
         console.log(err1);
-        return res.send({ status: false });
+        res.send({ data: "An Error Occurred", status: false });
       } else {
         if (res1.length > 0) {
-          return res.send({ data: "Username Already Taken" });
+          res.send({ data: "Username Already Taken", status: false });
         } else {
           if (password !== confirm_password) {
-            return res.send({ data: "Passwords Donot Match" });
-          }
-          if (password.length < 5) {
-            return res.send({
-              data: "Password Should be atleast 5 characters",
-            });
+            res.send({ data: "Passwords Do not Match", status: false });
           } else {
-            conn.query(
-              `INSERT INTO system_users SET ?`,
-              {
-                sur_name: surname,
-                other_name: other_name,
-                phone_number: phone_contact,
-                user_name: username,
-                email: email_address,
-                user_role: role,
-                department_id: parseInt(department),
-                gender: gender,
-                password: password,
-              },
-              (err2, res2) => {
-                if (err2) {
-                  console.log(err2);
-                  return res.send({ status: false });
-                } else {
-                  res.send({ data: "User Added Successfully", status: true });
+            if (password.length < 5) {
+              res.send({
+                data: "Password Should be atleast 5 characters",
+                status: false,
+              });
+            } else {
+              conn.query(
+                `INSERT INTO system_users SET ?`,
+                {
+                  sur_name: surname,
+                  other_name: other_name,
+                  phone_number: phone_contact,
+                  user_name: username,
+                  email: email_address,
+                  user_role: role,
+                  department_id: parseInt(department),
+                  gender: gender,
+                  password: password,
+                },
+                (err2, res2) => {
+                  if (err2) {
+                    console.log(err2);
+                    res.send({ status: false });
+                  } else {
+                    res.send({ data: "User Added Successfully", status: true });
+                  }
                 }
-              }
-            );
+              );
+            }
           }
         }
       }

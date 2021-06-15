@@ -27,14 +27,11 @@ class Department extends Component {
     fd.forEach((value, key) => {
       form_content[key] = value;
     });
-    let res = await FormsApi.Posting(
-      form_content,
-      "/user/admin/new_department"
-    );
+    let res = await FormsApi.post("/user/admin/new_department", form_content);
     if (res.status === true) {
       this.setState({
         ...this.state,
-        message: "Department Added Successfully....",
+        message: res.data,
         messageState: "success",
       });
     }
