@@ -2,12 +2,51 @@ import React, { Component } from "react";
 import { Button } from "@material-ui/core";
 import Nav from "./components/Nav";
 import Header from "./components/Header";
+import UsersApi from "../../api/users";
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      users_number: "...",
+      departments_number: "...",
+      tests_number: "...",
+      patients_number: "...",
+    };
+    this.users();
+    this.patients();
+    this.tests();
+    this.departments();
   }
+
+  async users() {
+    const res = (await UsersApi.data("/user/all/users")) || [];
+    if (res) {
+      this.setState({ ...this.state, users_number: res.length });
+    }
+  }
+
+  async departments() {
+    const res = (await UsersApi.data("/user/all/departments")) || [];
+    if (res) {
+      this.setState({ ...this.state, departments_number: res.length });
+    }
+  }
+
+  async patients() {
+    const res = (await UsersApi.data("/user/all/patients")) || [];
+    if (res) {
+      this.setState({ ...this.state, patients_number: res.length });
+    }
+  }
+
+  async tests() {
+    const res = (await UsersApi.data("/user/all/tests")) || [];
+    if (res) {
+      this.setState({ ...this.state, tests_number: res.length });
+    }
+  }
+
   render() {
     return (
       <>
@@ -19,7 +58,7 @@ class Dashboard extends Component {
             <div className="cards">
               <div className="card-single">
                 <div className="">
-                  <h1>54</h1>
+                  <h1>{this.state.patients_number}</h1>
                   <span>Patients</span>
                 </div>
                 <div className="">
@@ -28,7 +67,7 @@ class Dashboard extends Component {
               </div>
               <div className="card-single">
                 <div className="">
-                  <h1>34</h1>
+                  <h1>{this.state.users_number}</h1>
                   <span>Users</span>
                 </div>
                 <div className="">
@@ -37,7 +76,7 @@ class Dashboard extends Component {
               </div>
               <div className="card-single">
                 <div className="">
-                  <h1>10</h1>
+                  <h1>{this.state.departments_number}</h1>
                   <span>Departments</span>
                 </div>
                 <div className="">
@@ -46,7 +85,7 @@ class Dashboard extends Component {
               </div>
               <div className="card-single">
                 <div className="">
-                  <h1>54</h1>
+                  <h1>{this.state.tests_number}</h1>
                   <span>Tests</span>
                 </div>
                 <div className="">

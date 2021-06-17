@@ -148,7 +148,7 @@ class Tests extends Component {
                         <td>Name</td>
                         <td>Qty</td>
                         <td>Amount(Shs)</td>
-                        <td>Actions</td>
+                        <td>Details</td>
                       </tr>
                     </thead>
                     <tbody>
@@ -157,10 +157,15 @@ class Tests extends Component {
                         <td>1</td>
                         <td>3000</td>
                         <td>
-                          <div style={{ color: "dodgerblue" }}>
-                            <i className="las la-edit"></i>
-                            <i className="las la-trash"></i>
-                          </div>
+                          <Button variant="contained" color="primary">
+                            <span
+                              style={{
+                                fontSize: "10px",
+                                marginInline: "3px",
+                              }}
+                            ></span>
+                            Details
+                          </Button>
                         </td>
                       </tr>
                       <tr>
@@ -168,10 +173,15 @@ class Tests extends Component {
                         <td>5</td>
                         <td>3000</td>
                         <td>
-                          <div style={{ color: "dodgerblue" }}>
-                            <i className="las la-edit"></i>
-                            <i className="las la-trash"></i>
-                          </div>
+                          <Button variant="contained" color="primary">
+                            <span
+                              style={{
+                                fontSize: "10px",
+                                marginInline: "3px",
+                              }}
+                            ></span>
+                            Details
+                          </Button>
                         </td>
                       </tr>
                       <tr>
@@ -179,10 +189,15 @@ class Tests extends Component {
                         <td>4</td>
                         <td>3000</td>
                         <td>
-                          <div style={{ color: "dodgerblue" }}>
-                            <i className="las la-edit"></i>
-                            <i className="las la-trash"></i>
-                          </div>
+                          <Button variant="contained" color="primary">
+                            <span
+                              style={{
+                                fontSize: "10px",
+                                marginInline: "3px",
+                              }}
+                            ></span>
+                            Details
+                          </Button>
                         </td>
                       </tr>
                       <tr>
@@ -190,10 +205,15 @@ class Tests extends Component {
                         <td>3</td>
                         <td>3000</td>
                         <td>
-                          <div style={{ color: "dodgerblue" }}>
-                            <i className="las la-edit"></i>
-                            <i className="las la-trash"></i>
-                          </div>
+                          <Button variant="contained" color="primary">
+                            <span
+                              style={{
+                                fontSize: "10px",
+                                marginInline: "3px",
+                              }}
+                            ></span>
+                            Details
+                          </Button>
                         </td>
                       </tr>
                     </tbody>
@@ -252,16 +272,7 @@ function TestDetails() {
             display: "block",
           }}
         />
-        <TextField
-          name="qty"
-          variant="outlined"
-          label="Quantity"
-          style={{
-            width: "320px",
-            margin: "20px",
-            display: "block",
-          }}
-        />
+
         <TextField
           name="amount"
           variant="outlined"

@@ -43,7 +43,7 @@ router.post("/new_patient", async (req, res) => {
   let patient_num = num(3);
 
   conn.query(
-    `INSERT INTO patient_details_tbl SET ?`,
+    `INSERT INTO patients_tbl SET ?`,
     {
       first_name: first_name,
       sur_name: surname,

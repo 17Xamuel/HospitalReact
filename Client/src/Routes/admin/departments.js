@@ -155,40 +155,60 @@ class Department extends Component {
                         <td>LAB</td>
                         <td>4</td>
                         <td>
-                          <div style={{ color: "dodgerblue" }}>
-                            <i className="las la-edit"></i>
-                            <i className="las la-trash"></i>
-                          </div>
+                          <Button variant="contained" color="primary">
+                            <span
+                              style={{
+                                fontSize: "10px",
+                                marginInline: "3px",
+                              }}
+                            ></span>
+                            Details
+                          </Button>
                         </td>
                       </tr>
                       <tr>
                         <td>Reception</td>
                         <td>2</td>
                         <td>
-                          <div style={{ color: "dodgerblue" }}>
-                            <i className="las la-edit"></i>
-                            <i className="las la-trash"></i>
-                          </div>
+                          <Button variant="contained" color="primary">
+                            <span
+                              style={{
+                                fontSize: "10px",
+                                marginInline: "3px",
+                              }}
+                            ></span>
+                            Details
+                          </Button>
                         </td>
                       </tr>
                       <tr>
                         <td>OPD</td>
                         <td>3</td>
                         <td>
-                          <div style={{ color: "dodgerblue" }}>
-                            <i className="las la-edit"></i>
-                            <i className="las la-trash"></i>
-                          </div>
+                          <Button variant="contained" color="primary">
+                            <span
+                              style={{
+                                fontSize: "10px",
+                                marginInline: "3px",
+                              }}
+                            ></span>
+                            Details
+                          </Button>
                         </td>
                       </tr>
                       <tr>
                         <td>Martenity</td>
                         <td>8</td>
                         <td>
-                          <div style={{ color: "dodgerblue" }}>
-                            <i className="las la-edit"></i>
-                            <i className="las la-trash"></i>
-                          </div>
+                          <Button variant="contained" color="primary">
+                            <span
+                              style={{
+                                fontSize: "10px",
+                                marginInline: "3px",
+                              }}
+                            ></span>
+                            Details
+                          </Button>
                         </td>
                       </tr>
                     </tbody>
