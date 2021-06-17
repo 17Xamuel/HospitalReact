@@ -31,7 +31,6 @@ class LabRequest extends Component {
     });
     const api = new FormsApi();
     let res = await api.post("/user/doctor/new_lab_request", _fcontent);
-    console.log(res);
     if (res.status === true) {
       this.setState({
         ...this.state,

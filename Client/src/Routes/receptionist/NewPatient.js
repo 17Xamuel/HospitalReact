@@ -16,6 +16,7 @@ import FormsApi from "../../api/forms";
 
 import "../../design/main.css";
 import "../../design/forms.css";
+import UsersApi from "../../api/users";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -25,18 +26,45 @@ class NewPatient extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      error: false,
       open: false,
-      message: "Please Wait...",
+      message: "",
       messageState: "",
       currentTab: 0,
       backTabButtonClickable: false,
       submitButton: false,
+      onOpenState: {
+        patient_number: "",
+      },
+      required: {
+        surname: "",
+        other_names: "",
+        gender: "",
+      },
     };
+    this.onOpenFile();
   }
+  onOpenFile = async () => {
+    const p_number = await UsersApi.data("/user/receptionist/pnumber");
 
+    if (p_number.status === true) {
+      this.setState({
+        ...this.state,
+        onOpenState: {
+          ...this.state.onOpenState,
+          patient_number: p_number._pnumber,
+        },
+      });
+    }
+  };
   handleSubmit = async (e) => {
     e.preventDefault();
-    this.setState({ ...this.state, open: true, messageState: "info" });
+    this.setState({
+      ...this.state,
+      open: true,
+      messageState: "info",
+      message: "Please Wait...",
+    });
     const fd = new FormData(e.target);
     let _fcontent = {};
     fd.forEach((value, key) => {
@@ -61,11 +89,27 @@ class NewPatient extends Component {
   };
 
   handleSlideForward = () => {
-    this.setState({
-      ...this.state,
-      submitButton: true,
-      currentTab: 1,
+    let err = false;
+    Object.values(this.state.required).forEach((e) => {
+      if (e.length == 0) {
+        err = true;
+        this.setState({
+          ...this.state,
+          error: true,
+          open: true,
+          messageState: "warning",
+          message: "These Input Fields are required",
+        });
+      }
     });
+    if (!err) {
+      this.setState({
+        ...this.state,
+        error: false,
+        submitButton: true,
+        currentTab: 1,
+      });
+    }
   };
   handleSlideBack = () => {
     if (this.state.currentTab === 0) {
@@ -116,6 +160,7 @@ class NewPatient extends Component {
                 <form
                   className="card"
                   autoComplete="off"
+                  noValidate
                   onSubmit={this.handleSubmit}
                 >
                   <div
@@ -127,11 +172,11 @@ class NewPatient extends Component {
                   >
                     <div className="form-header-ctr">
                       <div className="">
-                        {/* <h3>New Patient</h3> */}
                         <TextField
                           name="patient_number"
                           variant="outlined"
-                          label="Patient Number"
+                          label="New Patient Number"
+                          value={this.state.onOpenState.patient_number}
                           style={{
                             width: "250px",
                             margin: "20px 0px",
@@ -177,26 +222,44 @@ class NewPatient extends Component {
                               <TextField
                                 name="surname"
                                 variant="outlined"
-                                type=""
                                 label="Surname"
                                 style={{
                                   width: "75%",
                                   margin: "20px",
                                 }}
+                                error={this.state.error}
+                                onChange={(e) => {
+                                  this.setState({
+                                    ...this.state,
+                                    required: {
+                                      ...this.state.required,
+                                      surname: e.target.value,
+                                    },
+                                  });
+                                }}
                               />
                               <TextField
-                                name="first_name"
+                                name="other_names"
                                 variant="outlined"
-                                label="First Name"
+                                label="Other Names"
                                 style={{
                                   width: "75%",
                                   margin: "20px",
+                                }}
+                                error={this.state.error}
+                                onChange={(e) => {
+                                  this.setState({
+                                    ...this.state,
+                                    required: {
+                                      ...this.state.required,
+                                      other_names: e.target.value,
+                                    },
+                                  });
                                 }}
                               />
                               <TextField
                                 name="dob"
                                 variant="outlined"
-                                // label="Date Of Birth"
                                 helperText="Date of Birth"
                                 type="date"
                                 style={{
@@ -217,6 +280,17 @@ class NewPatient extends Component {
                                   labelId="gender"
                                   id="select_gender"
                                   label="Gender"
+                                  value="M"
+                                  error={this.state.error}
+                                  onChange={(e) => {
+                                    this.setState({
+                                      ...this.state,
+                                      required: {
+                                        ...this.state.required,
+                                        gender: e.target.value,
+                                      },
+                                    });
+                                  }}
                                 >
                                   <MenuItem value="M">Male</MenuItem>
                                   <MenuItem value="F">Female</MenuItem>
@@ -277,6 +351,7 @@ class NewPatient extends Component {
                                   labelId="marital_status"
                                   id="select_marital_status"
                                   label="Marital Status"
+                                  value="Single"
                                 >
                                   <MenuItem value="Single">Single</MenuItem>
                                   <MenuItem value="Married">Married</MenuItem>
@@ -296,6 +371,7 @@ class NewPatient extends Component {
                                   labelId="religion"
                                   id="select_religion"
                                   label="Religion"
+                                  value="Christian"
                                 >
                                   <MenuItem value="Christian">
                                     Christian
@@ -350,11 +426,14 @@ class NewPatient extends Component {
                               <TextField
                                 name="district"
                                 variant="outlined"
+                                required
+                                className="req"
                                 label="District"
                                 style={{
                                   width: "75%",
                                   margin: "20px",
                                 }}
+                                onError={this.handleInputError}
                               />
                               <TextField
                                 name="sub_county"

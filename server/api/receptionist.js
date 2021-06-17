@@ -1,23 +1,43 @@
 const router = require("express").Router();
 const conn = require("../database/db");
 
-function num(l) {
-  var rc = "ABCDEF1234";
-  var r = "";
-  for (var i = 0; i < l; i++) {
-    r += rc.charAt(Math.floor(Math.random() * rc.length));
-  }
-  let date = new Date();
-  return (
-    (date.getDate() < 10
-      ? "0" + date.getDate().toString()
-      : date.getDate().toString()) +
-    (date.getMonth() < 10
-      ? "0" + (date.getMonth() + 1).toString()
-      : (date.getMonth() + 1).toString()) +
-    r
+router.get("/pnumber", (req, res) => {
+  conn.query(
+    "SELECT patient_id FROM patients_tbl ORDER BY date DESC LIMIT 1",
+    (err, sql_res) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(sql_res);
+        let last_id =
+          sql_res.length > 0
+            ? parseInt(sql_res[0].patient_id.substr(6)) + 1
+            : 1;
+        let id =
+          last_id < 10
+            ? "00" + last_id.toString()
+            : last_id < 100
+            ? "0" + last_id.toString()
+            : last_id.toString();
+        res.send({ status: true, _pnumber: getPatientNumber(id) });
+        function getPatientNumber(id) {
+          let date = new Date();
+          return (
+            (date.getDate() < 10
+              ? "0" + date.getDate().toString()
+              : date.getDate().toString()) +
+            "/" +
+            (date.getMonth() < 10
+              ? "0" + (date.getMonth() + 1).toString()
+              : (date.getMonth() + 1).toString()) +
+            "/" +
+            id
+          );
+        }
+      }
+    }
   );
-}
+});
 
 router.post("/new_patient", async (req, res) => {
   let {

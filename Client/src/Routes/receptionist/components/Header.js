@@ -28,17 +28,22 @@ class Header extends Component {
             <span className="las la-search"></span>
             <input type="search" name="" id="" placeholder="Search here" />
           </div>
-          <div
-            className="user-wrapper"
-            aria-controls="reception-actions"
-            aria-haspopup="true"
-            onClick={this.handleOpenActions}
-            style={{ cursor: "pointer" }}
-          >
-            <img src={Avatar} alt="" width="40px" height="40px" />
-            <div className="">
-              <h4>John Doe</h4>
-              <small>Doctor</small>
+          <div className="" style={{ display: "flex", alignItems: "center" }}>
+            <div className="" style={{ fontSize: "42px", marginRight: 20 }}>
+              <i className="las la-bell"></i>
+            </div>
+            <div
+              className="user-wrapper"
+              aria-controls="reception-actions"
+              aria-haspopup="true"
+              onClick={this.handleOpenActions}
+              style={{ cursor: "pointer" }}
+            >
+              <img src={Avatar} alt="" width="40px" height="40px" />
+              <div className="">
+                <h4>John Doe</h4>
+                <small>Doctor</small>
+              </div>
             </div>
           </div>
         </header>

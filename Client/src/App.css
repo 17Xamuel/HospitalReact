@@ -256,6 +256,9 @@ main {
 .card-body {
   padding: 1rem;
 }
+.card-body table tr td {
+  padding: 15px;
+}
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -340,12 +343,21 @@ td .status {
   .fullwidth-ctr,
   .recent-grid-left {
     grid-template-columns: 100%;
+    grid-gap: 1.5rem;
   }
   .search-wrapper {
     display: none;
   }
   .sideBar-ctr {
     left: -100% !important;
+  }
+  .sidebar-menu ._a_replaced span:first-child {
+    font-size: 1.5rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+  .card-body {
+    overflow: auto;
   }
   #nav-toggle:not(:checked) + .sideBar-ctr {
     left: 0 !important;

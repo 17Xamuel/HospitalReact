@@ -105,42 +105,52 @@ class Dashboard extends Component {
                 <div className="card">
                   <div className="card-header">
                     <h3>Recent Patients</h3>
-                    <Button variant="contained" color="primary">
-                      See all
-                      <span style={{ fontSize: "17.5px", marginLeft: "10px" }}>
-                        <span className="las la-arrow-right"></span>
-                      </span>
-                    </Button>
+                    <Link to="/all_patients">
+                      <Button variant="contained" color="primary">
+                        See all
+                        <span
+                          style={{ fontSize: "17.5px", marginLeft: "10px" }}
+                        >
+                          <span className="las la-arrow-right"></span>
+                        </span>
+                      </Button>
+                    </Link>
                   </div>
                   <div className="card-body">
                     <table width="100%">
                       <thead>
                         <tr>
-                          <td>Patient</td>
-                          <td>Department</td>
-                          <td>Status</td>
+                          <td>Patient No.</td>
+                          <td>Name</td>
+                          <td></td>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Fat</td>
-                          <td>OPD</td>
+                          <td>16/06/001</td>
+                          <td>Xamuel</td>
                           <td>
-                            <span className="status purple"></span>Sick
+                            <Button variant="contained" color="primary">
+                              Details
+                            </Button>
                           </td>
                         </tr>
                         <tr>
-                          <td>Dan</td>
-                          <td>OPD</td>
+                          <td>16/06/001</td>
+                          <td>Xamuel</td>
                           <td>
-                            <span className="status pink"></span>Very Sick
+                            <Button variant="contained" color="primary">
+                              Details
+                            </Button>
                           </td>
                         </tr>
                         <tr>
-                          <td>Hajara</td>
-                          <td>OPD</td>
+                          <td>16/06/001</td>
+                          <td>Xamuel</td>
                           <td>
-                            <span className="status orange"></span>Treatment
+                            <Button variant="contained" color="primary">
+                              Details
+                            </Button>
                           </td>
                         </tr>
                       </tbody>
@@ -178,7 +188,7 @@ class Dashboard extends Component {
                           New Patient
                         </MenuItem>
                       </Link>
-                      <Link to="/screening">
+                      <Link to="/triage">
                         <MenuItem onClick={this.handleCloseActions}>
                           Triage
                         </MenuItem>
