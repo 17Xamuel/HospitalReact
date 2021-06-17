@@ -36,14 +36,20 @@ class New_user extends Component {
     fd.forEach((value, key) => {
       _fcontent[key] = value;
     });
-    const api = new FormsApi();
-    let res = await api.postUser(_fcontent);
+    let api = new FormsApi();
+    let res = await api.post("/user/admin/new_user", _fcontent);
     console.log(res);
     if (res.status === true) {
       this.setState({
         ...this.state,
-        message: "User Registered SuccessFully...",
+        message: res.data,
         messageState: "success",
+      });
+    } else {
+      this.setState({
+        ...this.state,
+        message: res.data,
+        messageState: "error",
       });
     }
   };

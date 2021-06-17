@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Button, IconButton } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import Nav from "./components/Nav";
 import Header from "./components/Header";
 
@@ -57,19 +57,16 @@ class Patients extends Component {
                           <td>04/03/2000</td>
                           <td>
                             <div>
-                              <IconButton>
-                                <i
-                                  className="las la-edit"
-                                  style={{ color: "dodgerblue" }}
-                                ></i>
-                              </IconButton>
                               <Link to="/patient_details">
-                                <IconButton>
-                                  <i
-                                    className="las la-eye"
-                                    style={{ color: "dodgerblue" }}
-                                  ></i>
-                                </IconButton>
+                                <Button variant="contained" color="primary">
+                                  <span
+                                    style={{
+                                      fontSize: "10px",
+                                      marginInline: "3px",
+                                    }}
+                                  ></span>
+                                  Details
+                                </Button>
                               </Link>
                             </div>
                           </td>
@@ -81,18 +78,17 @@ class Patients extends Component {
                           <td>04/03/2000</td>
                           <td>
                             <div>
-                              <IconButton>
-                                <i
-                                  className="las la-edit"
-                                  style={{ color: "dodgerblue" }}
-                                ></i>
-                              </IconButton>
-                              <IconButton>
-                                <i
-                                  className="las la-eye"
-                                  style={{ color: "dodgerblue" }}
-                                ></i>
-                              </IconButton>
+                              <Link to="/patient_details">
+                                <Button variant="contained" color="primary">
+                                  <span
+                                    style={{
+                                      fontSize: "10px",
+                                      marginInline: "3px",
+                                    }}
+                                  ></span>
+                                  Details
+                                </Button>
+                              </Link>
                             </div>
                           </td>
                         </tr>
@@ -103,18 +99,17 @@ class Patients extends Component {
                           <td>04/03/2000</td>
                           <td>
                             <div>
-                              <IconButton>
-                                <i
-                                  className="las la-edit"
-                                  style={{ color: "dodgerblue" }}
-                                ></i>
-                              </IconButton>
-                              <IconButton>
-                                <i
-                                  className="las la-eye"
-                                  style={{ color: "dodgerblue" }}
-                                ></i>
-                              </IconButton>
+                              <Link to="/patient_details">
+                                <Button variant="contained" color="primary">
+                                  <span
+                                    style={{
+                                      fontSize: "10px",
+                                      marginInline: "3px",
+                                    }}
+                                  ></span>
+                                  Details
+                                </Button>
+                              </Link>
                             </div>
                           </td>
                         </tr>
@@ -125,18 +120,17 @@ class Patients extends Component {
                           <td>04/03/2000</td>
                           <td>
                             <div>
-                              <IconButton>
-                                <i
-                                  className="las la-edit"
-                                  style={{ color: "dodgerblue" }}
-                                ></i>
-                              </IconButton>
-                              <IconButton>
-                                <i
-                                  className="las la-eye"
-                                  style={{ color: "dodgerblue" }}
-                                ></i>
-                              </IconButton>
+                              <Link to="/patient_details">
+                                <Button variant="contained" color="primary">
+                                  <span
+                                    style={{
+                                      fontSize: "10px",
+                                      marginInline: "3px",
+                                    }}
+                                  ></span>
+                                  Details
+                                </Button>
+                              </Link>
                             </div>
                           </td>
                         </tr>
@@ -147,18 +141,17 @@ class Patients extends Component {
                           <td>04/03/2000</td>
                           <td>
                             <div>
-                              <IconButton>
-                                <i
-                                  className="las la-edit"
-                                  style={{ color: "dodgerblue" }}
-                                ></i>
-                              </IconButton>
-                              <IconButton>
-                                <i
-                                  className="las la-eye"
-                                  style={{ color: "dodgerblue" }}
-                                ></i>
-                              </IconButton>
+                              <Link to="/patient_details">
+                                <Button variant="contained" color="primary">
+                                  <span
+                                    style={{
+                                      fontSize: "10px",
+                                      marginInline: "3px",
+                                    }}
+                                  ></span>
+                                  Details
+                                </Button>
+                              </Link>
                             </div>
                           </td>
                         </tr>

@@ -35,8 +35,14 @@ class Referral extends Component {
     if (res.status === true) {
       this.setState({
         ...this.state,
-        message: "Referral Added...",
+        message: res.data,
         messageState: "success",
+      });
+    } else {
+      this.setState({
+        ...this.state,
+        message: res.data,
+        messageState: "error",
       });
     }
   };

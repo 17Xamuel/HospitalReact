@@ -35,8 +35,14 @@ class ClinicalInformationClass extends Component {
     if (res.status === true) {
       this.setState({
         ...this.state,
-        message: "Clinical Info SuccessFully Saved...",
+        message: res.data,
         messageState: "success",
+      });
+    } else {
+      this.setState({
+        ...this.state,
+        message: res.data,
+        messageState: "error",
       });
     }
   };

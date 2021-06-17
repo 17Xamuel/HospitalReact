@@ -34,8 +34,14 @@ class LabReport extends Component {
     if (res.status === true) {
       this.setState({
         ...this.state,
-        message: "Report Added SuccessFully...",
+        message: res.data,
         messageState: "success",
+      });
+    } else {
+      this.setState({
+        ...this.state,
+        message: res.data,
+        messageState: "error",
       });
     }
   };

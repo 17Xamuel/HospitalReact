@@ -34,8 +34,14 @@ class DiagnosisClass extends Component {
     if (res.status === true) {
       this.setState({
         ...this.state,
-        message: "Diagnosis Saved SuccessFully...",
+        message: res.data,
         messageState: "success",
+      });
+    } else {
+      this.setState({
+        ...this.state,
+        message: res.data,
+        messageState: "error",
       });
     }
   };

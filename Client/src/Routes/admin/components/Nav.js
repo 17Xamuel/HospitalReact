@@ -92,6 +92,18 @@ class Nav extends Component {
                     </span>
                   </Link>
                 </li>
+                <li>
+                  <Link to="/addresses">
+                    <span
+                      className={`${
+                        this.props.active === "addresses" ? "active" : ""
+                      } _a_replaced`}
+                    >
+                      <span className="las la-users"></span>
+                      <span>Addresses</span>
+                    </span>
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>

@@ -35,8 +35,14 @@ class SampleCollection extends Component {
     if (res.status === true) {
       this.setState({
         ...this.state,
-        message: "Sample Collections Addded...",
+        message: res.data,
         messageState: "success",
+      });
+    } else {
+      this.setState({
+        ...this.state,
+        message: res.data,
+        messageState: "error",
       });
     }
   };

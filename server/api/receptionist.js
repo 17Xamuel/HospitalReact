@@ -52,10 +52,6 @@ router.post("/new_patient", async (req, res) => {
     marital_status,
     religion,
     tribe,
-    district,
-    sub_county,
-    parish,
-    village,
     nk_surname,
     nk_first_name,
     nk_relationship,
@@ -67,7 +63,7 @@ router.post("/new_patient", async (req, res) => {
   let patient_num = num(3);
 
   conn.query(
-    `INSERT INTO patient_details_tbl SET ?`,
+    `INSERT INTO patients_tbl SET ?`,
     {
       first_name: first_name,
       sur_name: surname,
@@ -80,10 +76,7 @@ router.post("/new_patient", async (req, res) => {
       education_level: education_level,
       religion: religion,
       tribe: tribe,
-      district: district,
-      subcounty: sub_county,
-      village: village,
-      parish: parish,
+      village_id: village_id,
       patient_details_id: patient_num,
       date: new Date(),
     },

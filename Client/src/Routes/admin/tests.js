@@ -27,13 +27,19 @@ class Tests extends Component {
     fd.forEach((value, key) => {
       form_content[key] = value;
     });
-    const api = new FormsApi();
-    let res = await api.postNewTest(form_content);
+    let api = new FormsApi();
+    let res = await api.post("/user/admin/new_test", form_content);
     if (res.status === true) {
       this.setState({
         ...this.state,
-        message: "Test Added Successfully....",
+        message: res.data,
         messageState: "success",
+      });
+    } else {
+      this.setState({
+        ...this.state,
+        messageState: "error",
+        message: res.data,
       });
     }
   };
@@ -142,7 +148,7 @@ class Tests extends Component {
                         <td>Name</td>
                         <td>Qty</td>
                         <td>Amount(Shs)</td>
-                        <td>Actions</td>
+                        <td>Details</td>
                       </tr>
                     </thead>
                     <tbody>
@@ -151,10 +157,15 @@ class Tests extends Component {
                         <td>1</td>
                         <td>3000</td>
                         <td>
-                          <div style={{ color: "dodgerblue" }}>
-                            <i className="las la-edit"></i>
-                            <i className="las la-trash"></i>
-                          </div>
+                          <Button variant="contained" color="primary">
+                            <span
+                              style={{
+                                fontSize: "10px",
+                                marginInline: "3px",
+                              }}
+                            ></span>
+                            Details
+                          </Button>
                         </td>
                       </tr>
                       <tr>
@@ -162,10 +173,15 @@ class Tests extends Component {
                         <td>5</td>
                         <td>3000</td>
                         <td>
-                          <div style={{ color: "dodgerblue" }}>
-                            <i className="las la-edit"></i>
-                            <i className="las la-trash"></i>
-                          </div>
+                          <Button variant="contained" color="primary">
+                            <span
+                              style={{
+                                fontSize: "10px",
+                                marginInline: "3px",
+                              }}
+                            ></span>
+                            Details
+                          </Button>
                         </td>
                       </tr>
                       <tr>
@@ -173,10 +189,15 @@ class Tests extends Component {
                         <td>4</td>
                         <td>3000</td>
                         <td>
-                          <div style={{ color: "dodgerblue" }}>
-                            <i className="las la-edit"></i>
-                            <i className="las la-trash"></i>
-                          </div>
+                          <Button variant="contained" color="primary">
+                            <span
+                              style={{
+                                fontSize: "10px",
+                                marginInline: "3px",
+                              }}
+                            ></span>
+                            Details
+                          </Button>
                         </td>
                       </tr>
                       <tr>
@@ -184,10 +205,15 @@ class Tests extends Component {
                         <td>3</td>
                         <td>3000</td>
                         <td>
-                          <div style={{ color: "dodgerblue" }}>
-                            <i className="las la-edit"></i>
-                            <i className="las la-trash"></i>
-                          </div>
+                          <Button variant="contained" color="primary">
+                            <span
+                              style={{
+                                fontSize: "10px",
+                                marginInline: "3px",
+                              }}
+                            ></span>
+                            Details
+                          </Button>
                         </td>
                       </tr>
                     </tbody>
@@ -206,7 +232,7 @@ export default Tests;
 
 const styles = {
   input_ctr: {
-    width: "50%",
+    width: "70%",
     margin: "auto",
   },
   input_group: {
@@ -246,16 +272,7 @@ function TestDetails() {
             display: "block",
           }}
         />
-        <TextField
-          name="qty"
-          variant="outlined"
-          label="Quantity"
-          style={{
-            width: "320px",
-            margin: "20px",
-            display: "block",
-          }}
-        />
+
         <TextField
           name="amount"
           variant="outlined"

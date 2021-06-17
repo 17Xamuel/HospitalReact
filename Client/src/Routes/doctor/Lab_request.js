@@ -34,8 +34,14 @@ class LabRequest extends Component {
     if (res.status === true) {
       this.setState({
         ...this.state,
-        message: "Lab Request Added...",
+        message: res.data,
         messageState: "success",
+      });
+    } else {
+      this.setState({
+        ...this.state,
+        messageState: "error",
+        message: res.data,
       });
     }
   };
