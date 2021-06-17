@@ -232,7 +232,7 @@ export default Tests;
 
 const styles = {
   input_ctr: {
-    width: "50%",
+    width: "70%",
     margin: "auto",
   },
   input_group: {

@@ -89,12 +89,15 @@ class Payments extends Component {
                           <td>12000</td>
                           <td>3000</td>
                           <td>
-                            <IconButton>
-                              <i
-                                className="las la-eye"
-                                style={{ color: "dodgerblue" }}
-                              ></i>
-                            </IconButton>
+                            <Button variant="contained" color="primary">
+                              <span
+                                style={{
+                                  fontSize: "10px",
+                                  marginInline: "3px",
+                                }}
+                              ></span>
+                              Details
+                            </Button>
                           </td>
                         </tr>
                         <tr>
@@ -102,12 +105,15 @@ class Payments extends Component {
                           <td>12000</td>
                           <td>3000</td>
                           <td>
-                            <IconButton>
-                              <i
-                                className="las la-eye"
-                                style={{ color: "dodgerblue" }}
-                              ></i>
-                            </IconButton>
+                            <Button variant="contained" color="primary">
+                              <span
+                                style={{
+                                  fontSize: "10px",
+                                  marginInline: "3px",
+                                }}
+                              ></span>
+                              Details
+                            </Button>
                           </td>
                         </tr>
                         <tr>
@@ -115,12 +121,15 @@ class Payments extends Component {
                           <td>12000</td>
                           <td>3000</td>
                           <td>
-                            <IconButton>
-                              <i
-                                className="las la-eye"
-                                style={{ color: "dodgerblue" }}
-                              ></i>
-                            </IconButton>
+                            <Button variant="contained" color="primary">
+                              <span
+                                style={{
+                                  fontSize: "10px",
+                                  marginInline: "3px",
+                                }}
+                              ></span>
+                              Details
+                            </Button>
                           </td>
                         </tr>
                         <tr>
@@ -128,12 +137,15 @@ class Payments extends Component {
                           <td>12000</td>
                           <td>3000</td>
                           <td>
-                            <IconButton>
-                              <i
-                                className="las la-eye"
-                                style={{ color: "dodgerblue" }}
-                              ></i>
-                            </IconButton>
+                            <Button variant="contained" color="primary">
+                              <span
+                                style={{
+                                  fontSize: "10px",
+                                  marginInline: "3px",
+                                }}
+                              ></span>
+                              Details
+                            </Button>
                           </td>
                         </tr>
                       </tbody>
@@ -202,36 +214,45 @@ function Payment() {
                 <td>Consultation</td>
                 <td>20000</td>
                 <td>
-                  <IconButton>
-                    <i
-                      className="las la-edit"
-                      style={{ color: "dodgerblue" }}
-                    ></i>
-                  </IconButton>
+                  <Button variant="contained" color="primary">
+                    <span
+                      style={{
+                        fontSize: "10px",
+                        marginInline: "3px",
+                      }}
+                    ></span>
+                    Edit
+                  </Button>
                 </td>
               </tr>
               <tr>
                 <td>CBC Test</td>
                 <td>20000</td>
                 <td>
-                  <IconButton>
-                    <i
-                      className="las la-edit"
-                      style={{ color: "dodgerblue" }}
-                    ></i>
-                  </IconButton>
+                  <Button variant="contained" color="primary">
+                    <span
+                      style={{
+                        fontSize: "10px",
+                        marginInline: "3px",
+                      }}
+                    ></span>
+                    Edit
+                  </Button>
                 </td>
               </tr>
               <tr>
                 <td>AIDS Test</td>
                 <td>20000</td>
                 <td>
-                  <IconButton>
-                    <i
-                      className="las la-edit"
-                      style={{ color: "dodgerblue" }}
-                    ></i>
-                  </IconButton>
+                  <Button variant="contained" color="primary">
+                    <span
+                      style={{
+                        fontSize: "10px",
+                        marginInline: "3px",
+                      }}
+                    ></span>
+                    Edit
+                  </Button>
                 </td>
               </tr>
             </tbody>

@@ -245,7 +245,7 @@ export default Addresses;
 
 const styles = {
   input_ctr: {
-    width: "80%",
+    width: "70%",
     margin: "auto",
   },
   input_group: {

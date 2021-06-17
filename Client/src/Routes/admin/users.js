@@ -57,15 +57,17 @@ class Users extends Component {
                           <td>Lira</td>
                           <td>
                             <div>
-                              <Button variant="contained" color="primary">
-                                <span
-                                  style={{
-                                    fontSize: "10px",
-                                    marginInline: "3px",
-                                  }}
-                                ></span>
-                                Details
-                              </Button>
+                              <Link to="/user_details">
+                                <Button variant="contained" color="primary">
+                                  <span
+                                    style={{
+                                      fontSize: "10px",
+                                      marginInline: "3px",
+                                    }}
+                                  ></span>
+                                  Details
+                                </Button>
+                              </Link>
                             </div>
                           </td>
                         </tr>

@@ -1,24 +1,6 @@
 const router = require("express").Router();
 const conn = require("../database/db");
 
-function num(l) {
-  var rc = "ABCDEF1234";
-  var r = "";
-  for (var i = 0; i < l; i++) {
-    r += rc.charAt(Math.floor(Math.random() * rc.length));
-  }
-  let date = new Date();
-  return (
-    (date.getDate() < 10
-      ? "0" + date.getDate().toString()
-      : date.getDate().toString()) +
-    (date.getMonth() < 10
-      ? "0" + (date.getMonth() + 1).toString()
-      : (date.getMonth() + 1).toString()) +
-    r
-  );
-}
-
 router.post("/new_patient", async (req, res) => {
   let {
     surname,

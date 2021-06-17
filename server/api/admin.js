@@ -1,6 +1,24 @@
 const router = require("express").Router();
 const conn = require("../database/db");
 
+function num(l) {
+  var rc = "ABCDEF1234";
+  var r = "";
+  for (var i = 0; i < l; i++) {
+    r += rc.charAt(Math.floor(Math.random() * rc.length));
+  }
+  let date = new Date();
+  return (
+    (date.getDate() < 10
+      ? "0" + date.getDate().toString()
+      : date.getDate().toString()) +
+    (date.getMonth() < 10
+      ? "0" + (date.getMonth() + 1).toString()
+      : (date.getMonth() + 1).toString()) +
+    r
+  );
+}
+
 router.post("/login", async (req, res) => {
   conn.query(
     `SELECT * FROM system_users WHERE user_name = ? AND password = ?`,
@@ -128,6 +146,7 @@ router.post("/new_user", async (req, res) => {
                   user_role: role,
                   department_id: parseInt(department),
                   gender: gender,
+                  user_number:num(3),
                   password: password,
                 },
                 (err2, res2) => {
